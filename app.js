@@ -213,6 +213,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 					'.<br> Years of experience: '+ years_of_experience+'.'+
 					'.<br> Phone number: '+ phone_number +'.';
 					sendEmail('New job application',emailContent);
+					console.log(emailContent);
 
 				}
 		}
