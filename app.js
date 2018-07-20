@@ -192,10 +192,11 @@ function handleEcho(messageId, appId, metadata) {
 }
 
 function handleApiAiAction(sender, action, responseText, contexts, parameters) {
+	console.log('Antes do case ');
 	switch (action) {
-		case "detailed-application":
 		
-		console.log('Antes do isDefined ');
+		case "detailed-application":
+
 		if(isDefined(contexts[0]) && contexts[0].name=='job_application' && contexts[0].parameters){
 			let phone_number = (isDefined(contexts[0].parameters['phone-number']) 
 			&& contexts[0].parameters['phone-number']!='')? contexts[0].parameters['phone-number']:'';
