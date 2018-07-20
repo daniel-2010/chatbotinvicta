@@ -212,7 +212,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 					'.<br> Previous job position: '+previous_job+
 					'.<br> Years of experience: '+ years_of_experience+'.'+
 					'.<br> Phone number: '+ phone_number +'.';
-					
+					console.log(emailContent);
 					sendEmail('New job application',emailContent);
 					
 
@@ -237,11 +237,9 @@ function handleMessage(message, sender) {
 		case 0: //text
             if(message.speech!=''){ 
 				sendTextMessage(sender, message.speech);
-				
 				//sendTextMessage(sender, message.speech);
 				//break;
 			}	
-			
 		break;
 		case 2: //quick replies
 			let replies = [];
