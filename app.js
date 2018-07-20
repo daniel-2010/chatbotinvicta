@@ -216,6 +216,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 					console.log(emailContent);
 
 				}
+				console.log('Nome: '+user_name);
 		}
 		sendTextMessage(sender, responseText);
 		break;
