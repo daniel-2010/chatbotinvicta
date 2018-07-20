@@ -196,38 +196,37 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 	switch (action) {
 		
 		case "detailed-application":
+			if(isDefined(contexts[0]) && contexts[0].name=='job_application' && contexts[0].parameters){
+				let phone_number = (isDefined(contexts[0].parameters['phone-number']) 
+				&& contexts[0].parameters['phone-number']!='')? contexts[0].parameters['phone-number']:'';
+				let user_name = (isDefined(contexts[0].parameters['user-name']) 
+				&& contexts[0].parameters['user-name']!='')? contexts[0].parameters['user-name']:'';
+				let previous_job = (isDefined(contexts[0].parameters['previous-job']) 
+				&& contexts[0].parameters['previous-job']!='')? contexts[0].parameters['previous-job']:'';
+				let years_of_experience = (isDefined(contexts[0].parameters['years-of-experience']) 
+				&& contexts[0].parameters['years-of-experience']!='')? contexts[0].parameters['years-of-experience']:'';
+				let job_vacancy = (isDefined(contexts[0].parameters['job-vacancy']) 
+				&& contexts[0].parameters['job-vacancy']!='')? contexts[0].parameters['job-vacancy']:'';
+				if(phone_number != '' && user_name != '' && previous_job != '' &&
+					years_of_experience != '' &&job_vacancy != ''){
+						let emailContent = 'A new Job enquiery from '+ user_name + 'for the job: '+ job_vacancy+
+						'.<br> Previous job position: '+previous_job+
+						'.<br> Years of experience: '+ years_of_experience+'.'+
+						'.<br> Phone number: '+ phone_number +'.';
+						
+						sendEmail('New job application',emailContent);
+						
 
-		if(isDefined(contexts[0]) && contexts[0].name=='job_application' && contexts[0].parameters){
-			let phone_number = (isDefined(contexts[0].parameters['phone-number']) 
-			&& contexts[0].parameters['phone-number']!='')? contexts[0].parameters['phone-number']:'';
-			let user_name = (isDefined(contexts[0].parameters['user-name']) 
-			&& contexts[0].parameters['user-name']!='')? contexts[0].parameters['user-name']:'';
-			let previous_job = (isDefined(contexts[0].parameters['previous-job']) 
-			&& contexts[0].parameters['previous-job']!='')? contexts[0].parameters['previous-job']:'';
-			let years_of_experience = (isDefined(contexts[0].parameters['years-of-experience']) 
-			&& contexts[0].parameters['years-of-experience']!='')? contexts[0].parameters['years-of-experience']:'';
-			let job_vacancy = (isDefined(contexts[0].parameters['job-vacancy']) 
-			&& contexts[0].parameters['job-vacancy']!='')? contexts[0].parameters['job-vacancy']:'';
-			if(phone_number != '' && user_name != '' && previous_job != '' &&
-				years_of_experience != '' &&job_vacancy != ''){
-					let emailContent = 'A new Job enquiery from '+ user_name + 'for the job: '+ job_vacancy+
-					'.<br> Previous job position: '+previous_job+
-					'.<br> Years of experience: '+ years_of_experience+'.'+
-					'.<br> Phone number: '+ phone_number +'.';
-					console.log(emailContent);
-					sendEmail('New job application',emailContent);
+				}
 					
-
-			}
-				
 				console.log('Nome: '+user_name);
 				console.log('Phone: '+phone_number);
 				console.log('Previous Job: '+previous_job);
 				console.log('Years: '+years_of_experience);
 				console.log('Vacancy: '+job_vacancy);
-		}
-		sendTextMessage(sender, responseText);
-		break;
+			}
+			sendTextMessage(sender, responseText);
+			break;
 		default:
 			//unhandled action, just send back the text
 			sendTextMessage(sender, responseText);
@@ -241,9 +240,7 @@ function handleMessage(message, sender) {
 				sendTextMessage(sender, message.speech);
 				//sendTextMessage(sender, message.speech);
 				//break;
-			}	else{
-				sendTextMessage(sender, 'Message Speech Empty');
-			}
+			}	
 		break;
 		case 2: //quick replies
 			let replies = [];
@@ -905,8 +902,8 @@ function verifyRequestSignature(req, res, buf) {
 }
 function sendEmail(subject,content){
 	var helper = require('sendgrid').mail;
-	var from_email = new helper.Email(EMAIL_FROM);
-	var to_email = new helper.Email(EMAIL_TO);
+	var from_email = new helper.Email(config.EMAIL_FROM);
+	var to_email = new helper.Email(config.EMAIL_TO);
 	var subject = subject;
 	var content = new helper.Content('text/html', content);
 	var mail = new helper.Mail(from_email, subject, to_email, content);
