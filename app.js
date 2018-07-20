@@ -192,6 +192,7 @@ function handleEcho(messageId, appId, metadata) {
 }
 
 function handleApiAiAction(sender, action, responseText, contexts, parameters) {
+	responseText = responseText+ ' ';
 	switch (action) {
 		case "detailed-application":
 		
