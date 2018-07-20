@@ -237,10 +237,12 @@ function handleMessage(message, sender) {
 		case 0: //text
             if(message.speech!=''){ 
 				sendTextMessage(sender, message.speech);
-				break;
+				
 				//sendTextMessage(sender, message.speech);
 				//break;
-			}			
+			}	
+			
+		break;
 		case 2: //quick replies
 			let replies = [];
 			for (var b = 0; b < message.replies.length; b++) {
