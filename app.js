@@ -211,7 +211,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 					'.<br> Previous job position: '+previous_job+
 					'.<br> Years of experience: '+ years_of_experience+'.'+
 					'.<br> Phone number: '+ phone_number +'.';
-					sendeEmail('New job application',emailContent);
+					sendEmail('New job application',emailContent);
 
 				}
 		}
@@ -886,7 +886,7 @@ function verifyRequestSignature(req, res, buf) {
 		}
 	}
 }
-function sendemail(subject,content){
+function sendEmail(subject,content){
 	var helper = require('sendgrid').mail;
 	var from_email = new helper.Email(EMAIL_FROM);
 	var to_email = new helper.Email(EMAIL_TO);
