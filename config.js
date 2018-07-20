@@ -4,6 +4,9 @@ module.exports = {
     API_AI_CLIENT_ACCESS_TOKEN: 'c06f0be17a2149cfb3648b0e17ad22e3',
     FB_APP_SECRET: '796e6e33b9f1ae9ffe2d4a339e30c7de',
     SERVER_URL: "https://pizzbotchat.herokuapp.com/",
+    SENGRID_API_KEY: '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',
+    EMAIL_FROM: 'daniel-2.010@hotmail.com',
+    EMAIL_TO: 'daniel-2.010@hotmail.com'
 };
 
 
