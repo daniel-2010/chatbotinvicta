@@ -239,7 +239,9 @@ function handleMessage(message, sender) {
 				sendTextMessage(sender, message.speech);
 				//sendTextMessage(sender, message.speech);
 				//break;
-			}	
+			}	else{
+				sendTextMessage(sender, 'Message Speech Empty');
+			}
 		break;
 		case 2: //quick replies
 			let replies = [];
