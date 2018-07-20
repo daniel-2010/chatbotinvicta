@@ -212,8 +212,9 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 					'.<br> Previous job position: '+previous_job+
 					'.<br> Years of experience: '+ years_of_experience+'.'+
 					'.<br> Phone number: '+ phone_number +'.';
-					sendEmail('New job application',emailContent);
 					console.log(emailContent);
+					sendEmail('New job application',emailContent);
+					
 
 				}
 				console.log('Nome: '+user_name);
