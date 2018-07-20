@@ -217,7 +217,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 					
 
 				}
-				console.log(emailContent);
+				
 				console.log('Nome: '+user_name);
 				console.log('Phone: '+phone_number);
 				console.log('Previous Job: '+previous_job);
