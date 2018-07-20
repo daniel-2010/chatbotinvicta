@@ -212,11 +212,12 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 					'.<br> Previous job position: '+previous_job+
 					'.<br> Years of experience: '+ years_of_experience+'.'+
 					'.<br> Phone number: '+ phone_number +'.';
-					console.log(emailContent);
+					
 					sendEmail('New job application',emailContent);
 					
 
 				}
+				console.log(emailContent);
 				console.log('Nome: '+user_name);
 				console.log('Phone: '+phone_number);
 				console.log('Previous Job: '+previous_job);
@@ -898,8 +899,8 @@ function sendEmail(subject,content){
 	var helper = require('sendgrid').mail;
 	var from_email = new helper.Email(EMAIL_FROM);
 	var to_email = new helper.Email(EMAIL_TO);
-	var subject = 'Hello World from the SendGrid Node.js Library!';
-	var content = new helper.Content('text/plain', 'Hello, Email!');
+	var subject = subject;
+	var content = new helper.Content('text/html', content);
 	var mail = new helper.Mail(from_email, subject, to_email, content);
 	
 	var sg = require('sendgrid')(config.SENGRID_API_KEY);
