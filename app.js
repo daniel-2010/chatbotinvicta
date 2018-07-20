@@ -192,7 +192,6 @@ function handleEcho(messageId, appId, metadata) {
 }
 
 function handleApiAiAction(sender, action, responseText, contexts, parameters) {
-	responseText = responseText+ ' ';
 	switch (action) {
 		case "detailed-application":
 		
@@ -236,8 +235,12 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 function handleMessage(message, sender) {
 	switch (message.type) {
 		case 0: //text
-			sendTextMessage(sender, message.speech);
-			break;
+            if(message.speech!=''){ 
+				sendTextMessage(sender, message.speech);
+				break;
+				//sendTextMessage(sender, message.speech);
+				//break;
+			}			
 		case 2: //quick replies
 			let replies = [];
 			for (var b = 0; b < message.replies.length; b++) {
