@@ -194,6 +194,7 @@ function handleEcho(messageId, appId, metadata) {
 function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 	switch (action) {
 		case "detailed-application":
+		
 		if(isDefined(contexts[0]) && contexts[0].name=='job_application' && contexts[0].parameters){
 			let phone_number = (isDefined(contexts[0].parameters['phone-number']) 
 			&& contexts[0].parameters['phone-number']!='')? contexts[0].parameters['phone-number']:'';
@@ -902,9 +903,9 @@ function sendEmail(subject,content){
 	});
 	
 	sg.API(request, function(error, response) {
-	  console.log(response.statusCode);
-	  console.log(response.body);
-	  console.log(response.headers);
+	  console.log('Status: '+response.statusCode);
+	  console.log('Body: '+response.body);
+	  console.log('Header: '+response.headers);
 	});
 	
 }
