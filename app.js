@@ -192,7 +192,7 @@ function handleEcho(messageId, appId, metadata) {
 }
 
 function handleApiAiAction(sender, action, responseText, contexts, parameters) {
-	console.log('Antes do case ');
+	console.log('Antes do case');
 	switch (action) {
 		case "faq-delivery":
 		sendTextMessage(sender, responseText);
@@ -217,7 +217,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 				}
 			]
 			sendButtonMessage(sender, "What would you like to do next?",buttons)
-		})
+		},3000)
 
 		break;
 		
