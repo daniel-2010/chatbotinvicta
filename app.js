@@ -194,6 +194,32 @@ function handleEcho(messageId, appId, metadata) {
 function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 	console.log('Antes do case ');
 	switch (action) {
+		case "faq-delivery":
+		sendTextMessage(sender, responseText);
+		sendTypingOn(sender);
+		//ask what user wants to do next
+		setTimeout(function(){
+			let buttons = [
+				{
+					type:"web_url",
+					url: "https://www.myapple.com/track_order",
+					title: "Track my order"
+				},
+				{
+					type:"phone_number",
+					title: "Call us",
+					payload: "+550000000"
+				},
+				{
+					type: 'postback',
+					title: "Keep on Chatting",
+					payload: "CHAT"
+				}
+			]
+			sendButtonMessage(sender, "What would you like to do next?",buttons)
+		})
+
+		break;
 		
 		case "detailed-application":
 		console.log('Antes do isDefined ');
