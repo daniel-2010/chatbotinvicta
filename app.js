@@ -14,7 +14,7 @@ const User = require("./models/user");
 
 
 mongoose
-  .connect("mongodb+srv://root:FI065534@cluster0-rbyov.mongodb.net/node-angular")
+  .connect("mongodb+srv://root:FI065534@cluster0-rbyov.mongodb.net/node-angular", { useNewUrlParser: true })
   .then(() => {console.log("======= Connected to database! =======");})
   .catch(() => {console.log("======= Connection failed! =======");});
 
