@@ -9,6 +9,16 @@ const request = require('request');
 const app = express();
 const uuid = require('uuid');
 
+const mongoose = require("mongoose");
+const User = require("./models/user");
+
+
+mongoose
+  .connect("mongodb+srv://root:FI065534@cluster0-rbyov.mongodb.net/node-angular")
+  .then(() => {console.log("Connected to database!");})
+  .catch(() => {console.log("Connection failed!");});
+
+
 
 // Messenger API parameters
 if (!config.FB_PAGE_TOKEN) {
@@ -97,7 +107,15 @@ app.post('/webhook/', function (req, res) {
 	// Make sure this is a page subscription
 	if (data.object == 'page') {
 		// Iterate over each entry
-		// There may be multiple if batched
+		// There may be multiple if batchedpost.save().then(createdPost => {
+      res.status(201).json({
+        message: "Post added successfully",
+        post: {
+          ...createdPost,
+          id: createdPost._id
+        }
+      });
+    });
 		data.entry.forEach(function (pageEntry) {
 			var pageID = pageEntry.id;
 			var timeOfEvent = pageEntry.time;
@@ -242,6 +260,24 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 						'.<br> Phone number: '+ phone_number +'.';
 						
 						sendEmail('New job application',emailContent);
+
+						const user = new User({
+							user_name: user_name,
+							phone_number: phone_number,
+							previous_job: previous_job,
+							years_of_experience:years_of_experience,
+							job_vacancy: job_vacancy
+						  });
+
+						user.save().then(createdPost => {
+							res.status(201).json({
+							  message: "Post added successfully",
+							  post: {
+								...createdPost,
+								id: createdPost._id
+							  }
+							});
+						  });
 						
 
 				}
