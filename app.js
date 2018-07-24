@@ -828,8 +828,11 @@ function receivedPostback(event) {
 	var payload = event.postback.payload;
 
 	switch (payload) {
+		case 'GET_STARTED':
+
+		break;
 		case 'JOB_APPLY':
-		sendTextMessage(senderID,"Do you have job opening?");
+		sendTextMessage(senderID,"Job Opening!");
 		break;
 		case 'CHAT':
 		sendTextMessage(senderID, "I love chatting too. Do you have any other questions for me?");
