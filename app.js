@@ -14,7 +14,7 @@ const User = require("./models/user");
 
 
 mongoose
-  .connect("mongodb+srv://root:FI065534@cluster0-rbyov.mongodb.net/node-angular", { useNewUrlParser: true })
+  .connect("mongodb://root:FI065534@ds147361.mlab.com:47361/heroku_h63jz5zh")
   .then(() => {console.log("======= Connected to database! =======");})
   .catch(() => {console.log("======= Connection failed! =======");});
 
