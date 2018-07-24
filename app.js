@@ -108,14 +108,7 @@ app.post('/webhook/', function (req, res) {
 	if (data.object == 'page') {
 		// Iterate over each entry
 		// There may be multiple if batchedpost.save().then(createdPost => {
-      res.status(201).json({
-        message: "Post added successfully",
-        post: {
-          ...createdPost,
-          id: createdPost._id
-        }
-      });
-    });
+      
 		data.entry.forEach(function (pageEntry) {
 			var pageID = pageEntry.id;
 			var timeOfEvent = pageEntry.time;
@@ -272,7 +265,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 						user.save().then(createdPost => {
 							res.status(201).json({
 							  message: "Post added successfully",
-							  post: {
+							  user: {
 								...createdPost,
 								id: createdPost._id
 							  }
