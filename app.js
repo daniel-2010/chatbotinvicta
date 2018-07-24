@@ -835,7 +835,7 @@ function receivedPostback(event) {
 			greetUserText(senderID);
 		break;
 		case 'JOB_APPLY':
-			sendTextMessage(senderID,"Job Opening!");
+			sendToApiAi(senderID,"Do you have job opening?");
 		break;
 		case 'CHAT':
 		sendTextMessage(senderID, "I love chatting too. Do you have any other questions for me?");
