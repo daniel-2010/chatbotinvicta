@@ -15,8 +15,8 @@ const User = require("./models/user");
 
 mongoose
   .connect("mongodb+srv://root:FI065534@cluster0-rbyov.mongodb.net/node-angular")
-  .then(() => {console.log("Connected to database!");})
-  .catch(() => {console.log("Connection failed!");});
+  .then(() => {console.log("======= Connected to database! =======");})
+  .catch(() => {console.log("======= Connection failed! =======");});
 
 
 
