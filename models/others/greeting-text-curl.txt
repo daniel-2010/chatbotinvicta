@@ -1,0 +1,11 @@
+curl -X POST -H "Content-Type: application/json" -d '{
+  "greeting":[
+  {
+    "locale":"default",
+    "text":"Hi, SmartBabe at your service!"
+  }, {
+    "locale":"en_US",
+    "text":"Hi, SmartBabe at your service!"
+  }
+]
+}' "https://graph.facebook.com/v2.6/me/messenger_profile?access_token=INSERT-ACCESS-TOKEN-HERE"
