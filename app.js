@@ -765,7 +765,10 @@ function greetUserText(userId) {
 				console.log("FB user: %s %s, %s",
 					user.first_name, user.last_name, user.gender);
 
-				sendTextMessage(userId, "Welcome " + user.first_name + '!');
+				sendTextMessage(userId, "Welcome " + user.first_name + '!'+
+				'I can answer frequently asked questions for you ' +
+				'and I perform job intervies. What can I help you with?');
+				
 			} else {
 				console.log("Cannot get data for fb user with id",
 					userId);
@@ -829,10 +832,10 @@ function receivedPostback(event) {
 
 	switch (payload) {
 		case 'GET_STARTED':
-
+			greetUserText(senderID);
 		break;
 		case 'JOB_APPLY':
-		sendTextMessage(senderID,"Job Opening!");
+			sendTextMessage(senderID,"Job Opening!");
 		break;
 		case 'CHAT':
 		sendTextMessage(senderID, "I love chatting too. Do you have any other questions for me?");
