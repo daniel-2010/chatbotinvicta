@@ -11,6 +11,8 @@ const uuid = require('uuid');
 
 const mongoose = require("mongoose");
 const User = require("./models/user");
+const Employment = require("./models/employment");
+
 
 
 mongoose
@@ -281,7 +283,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 						
 						//sendEmail('New job application',emailContent);
 
-						const user = new User({
+						const employment = new Employment({
 							user_name: user_name,
 							phone_number: phone_number,
 							previous_job: previous_job,
@@ -289,7 +291,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 							job_vacancy: job_vacancy
 						  });
 
-						user.save().then(createdPost => {
+						  employment.save().then(createdPost => {
 							//res.status(201).json({
 							  message: "Post added successfully"
 							  //user: {
@@ -791,8 +793,33 @@ function greetUserText(userId) {
 			var user = JSON.parse(body);
 
 			if (user.first_name) {
-				console.log("FB user: %s %s, %s",
-					user.first_name, user.last_name, user.gender);
+
+				const db_user = new User({
+					fb_id: userId,
+					first_name: user.first_name,
+					last_name: user.last_name,
+					profile_pic: user.profile_pic,
+					locale: user.locale,
+					gender: user.gender,
+					timezone: user.timezone
+				  });
+
+				  db_user.findOne({fb_id: userId}, function(err,doc) {
+					if(err)
+					 console.log("Erro on findOne: "+err);
+					if (!doc){
+						db_user.save().then(createdPost => {
+							console.log("Post added successfully");
+						});
+					}
+				   });
+
+
+
+
+
+				//console.log("FB user: %s %s, %s",
+				//	user.first_name, user.last_name, user.gender);
 
 				sendTextMessage(userId, "Welcome " + user.first_name + '!'+
 				'I can answer frequently asked questions for you ' +
