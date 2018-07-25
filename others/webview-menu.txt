@@ -32,7 +32,7 @@ curl -X POST -H "Content-Type: application/json" -d '{
             {
               "title":"Settings",
               "type":"web_url",
-              "url":"https://pizzbotchat.herokuapp.com/",
+              "url":"https://pizzbotchat.herokuapp.com/webview",
               "webview_height_ratio": "tall",
               "messenger_extensions": true
             }
