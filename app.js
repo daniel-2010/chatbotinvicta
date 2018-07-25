@@ -245,7 +245,27 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 				&& contexts[0].parameters['years-of-experience']!='')? contexts[0].parameters['years-of-experience']:'';
 				let job_vacancy = (isDefined(contexts[0].parameters['job-vacancy']) 
 				&& contexts[0].parameters['job-vacancy']!='')? contexts[0].parameters['job-vacancy']:'';
-				if(phone_number != '' && user_name != '' && previous_job != '' &&
+
+				if(phone_number=='' && user_name!=''&& previous_job !='' && years_of_experience ==''){
+					let replies = [
+						{
+							"content_type":"text",
+							"title":"Less than 1 year",
+							"payload":"Less than 1 year"
+						},
+						{
+							"content_type":"text",
+							"title":"Less than 10 years",
+							"payload":"Less than 10 years"
+						},
+						{
+							"content_type":"text",
+							"title":"More than 10 years",
+							"payload":"More than 10 years"
+						}
+					];
+					sendQuickReply(sender,responseText,replies);
+				}else if(phone_number != '' && user_name != '' && previous_job != '' &&
 					years_of_experience != '' &&job_vacancy != ''){
 						let emailContent = 'A new Job enquiery from '+ user_name + 'for the job: '+ job_vacancy+
 						'.<br> Previous job position: '+previous_job+
@@ -271,17 +291,14 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 							  }
 							});
 						  });
-						
 
+						  sendTextMessage(sender, responseText);
+
+				}else{
+					sendTextMessage(sender, responseText);
 				}
-					
-				console.log('Nome: '+user_name);
-				console.log('Phone: '+phone_number);
-				console.log('Previous Job: '+previous_job);
-				console.log('Years: '+years_of_experience);
-				console.log('Vacancy: '+job_vacancy);
 			}
-			sendTextMessage(sender, responseText);
+			
 			break;
 		default:
 			//unhandled action, just send back the text
