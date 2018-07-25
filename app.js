@@ -804,7 +804,7 @@ function greetUserText(userId) {
 					timezone: user.timezone
 				  });
 
-				  db_user.findOne({fb_id: userId}, function(err,doc) {
+				  db_user.findOne({"fb_id": userId}, function(err,doc) {
 					if(err)
 					 console.log("Erro on findOne: "+err);
 					if (!doc){
