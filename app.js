@@ -52,7 +52,7 @@ if (!config.EMAIL_TO) { //sending email
 	throw new Error('missing EMAIL_TO');
 }
 
-app.use('/webviews',webviews);
+app.use('/webview',webviews);
 
 app.set('port', (process.env.PORT || 5000))
 
