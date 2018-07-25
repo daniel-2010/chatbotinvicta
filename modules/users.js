@@ -13,7 +13,7 @@ module.exports = {
             if (!doc){
                 person.save().then(createdPost => {
                     console.log("User added successfully from module");
-                    result: " ====> Usuario "+userId;
+                    result = " ====> Usuario "+userId;
                 });
             }
         });
