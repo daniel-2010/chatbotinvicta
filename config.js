@@ -6,7 +6,9 @@ module.exports = {
     SERVER_URL: "https://pizzbotchat.herokuapp.com/",
     SENGRID_API_KEY: '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',
     EMAIL_FROM: 'daniel-2.010@hotmail.com',
-    EMAIL_TO: 'daniel-2.010@hotmail.com'
+    EMAIL_TO: 'daniel-2.010@hotmail.com',
+    MONGODB_USER: 'root',
+    MONGODB_PASSWORD: 'FI065534'
 };
 
 

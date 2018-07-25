@@ -13,10 +13,12 @@ const mongoose = require("mongoose");
 const UserMongoose = require("./models/user");
 const Employment = require("./models/employment");
 
+const userModule = require('./modules/users');
+
 
 
 mongoose
-  .connect("mongodb://root:FI065534@ds147361.mlab.com:47361/heroku_h63jz5zh")
+  .connect("mongodb://"+config.MONGODB_USER+":"+config.MONGODB_PASSWORD+"@ds147361.mlab.com:47361/heroku_h63jz5zh")
   .then(() => {console.log("======= Connected to database! =======");})
   .catch(() => {console.log("======= Connection failed! =======");});
 
@@ -142,7 +144,11 @@ app.post('/webhook/', function (req, res) {
 });
 
 
-
+function setSessionAndUser(senderID){
+	if(!sessionIds.has(senderID)){
+		sessionIds.set(senderID, uuid.v1());
+	}
+}
 
 
 function receivedMessage(event) {
@@ -152,9 +158,7 @@ function receivedMessage(event) {
 	var timeOfMessage = event.timestamp;
 	var message = event.message;
 
-	if (!sessionIds.has(senderID)) {
-		sessionIds.set(senderID, uuid.v1());
-	}
+	setSessionAndUser(senderID);
 	//console.log("Received message for user %d and page %d at %d with message:", senderID, recipientID, timeOfMessage);
 	//console.log(JSON.stringify(message));
 
@@ -804,20 +808,8 @@ function greetUserText(userId) {
 					timezone: user.timezone
 				  });
 
-				  UserMongoose.findOne({"fb_id": userId}, function(err,doc) {
-						if(err)
-						 console.log("Erro on findOne: "+err);
-						if (!doc){
-							person.save().then(createdPost => {
-								console.log("Post added successfully");
-							});
-						}
-					   }
-				  );
-
-
-
-
+				  userModule.saveNewUser(userId,person,result);
+				
 
 				console.log("FB user: %s %s, %s",
 					user.first_name, user.last_name, user.gender);
