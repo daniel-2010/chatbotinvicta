@@ -5,10 +5,10 @@ const userSchema = mongoose.Schema({
   fb_id: { type: String, required: true },
   first_name: { type: String, required: true },
   last_name: { type: String, required: true },
-  profile_pic: { type: String, required: true },
-  locale: { type: String, required: true },
-  gender: { type: String, required: true },
-  timezone: { type: String, required: true }
+  profile_pic: { type: String},
+  locale: { type: String},
+  gender: { type: String },
+  timezone: { type: String}
 });
 
 module.exports = mongoose.model("user", userSchema);
