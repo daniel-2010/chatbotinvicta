@@ -234,7 +234,10 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 		
 		case "detailed-application":
 		console.log('Antes do isDefined ');
-			if(isDefined(contexts[0]) && contexts[0].name=='job_application' && contexts[0].parameters){
+			if(isDefined(contexts[0]) && 
+			(contexts[0].name=='job_application' || contexts[0].name=='job-application-details_dialog_context')
+			 && contexts[0].parameters){
+
 				let phone_number = (isDefined(contexts[0].parameters['phone-number']) 
 				&& contexts[0].parameters['phone-number']!='')? contexts[0].parameters['phone-number']:'';
 				let user_name = (isDefined(contexts[0].parameters['user-name']) 
