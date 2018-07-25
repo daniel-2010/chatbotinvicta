@@ -276,7 +276,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 						'.<br> Years of experience: '+ years_of_experience+'.'+
 						'.<br> Phone number: '+ phone_number +'.';
 						
-						sendEmail('New job application',emailContent);
+						//sendEmail('New job application',emailContent);
 
 						const user = new User({
 							user_name: user_name,
@@ -287,13 +287,13 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 						  });
 
 						user.save().then(createdPost => {
-							res.status(201).json({
-							  message: "Post added successfully",
-							  user: {
-								...createdPost,
-								id: createdPost._id
-							  }
-							});
+							//res.status(201).json({
+							  message: "Post added successfully"
+							  //user: {
+								//...createdPost,
+								//id: createdPost._id
+							  //}
+							//});
 						  });
 
 						  sendTextMessage(sender, responseText);
