@@ -61,6 +61,7 @@ app.use(bodyParser.json({
 	verify: verifyRequestSignature
 }));
 
+app.use('/webview',webview);
 //serve static files in the public directory
 app.use(express.static('public'));
 
@@ -72,7 +73,7 @@ app.use(bodyParser.urlencoded({
 // Process application/json
 app.use(bodyParser.json())
 
-app.use('/webview',webview);
+
 
 
 
