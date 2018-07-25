@@ -804,12 +804,12 @@ function greetUserText(userId) {
 					timezone: user.timezone
 				  });
 
-				  person.findOne({"fb_id": userId}).exec().then(
+				  person.findOne({"fb_id": userId}).then(
 					function(err,doc) {
 						if(err)
 						 console.log("Erro on findOne: "+err);
 						if (!doc){
-							db_user.save().then(createdPost => {
+							person.save().then(createdPost => {
 								console.log("Post added successfully");
 							});
 						}
