@@ -3,7 +3,8 @@ const UserMongoose = require("../models/user");
 
 module.exports = {
 
-    saveNewUser: function(userId,person){
+    saveNewUser: function(userId,person,res){
+        let result = '';
         UserMongoose.findOne({"fb_id": userId}, function(err,doc) {
             if(err){
              console.log("Erro on findOne: "+err);
@@ -12,11 +13,12 @@ module.exports = {
             if (!doc){
                 person.save().then(createdPost => {
                     console.log("User added successfully from module");
+                    result: " ====> Usuario "+userId;
                 });
-               
             }
-        }
-      );
+        });
+        res(result);
+
     }
 
 }
