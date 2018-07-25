@@ -246,7 +246,10 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 				let job_vacancy = (isDefined(contexts[0].parameters['job-vacancy']) 
 				&& contexts[0].parameters['job-vacancy']!='')? contexts[0].parameters['job-vacancy']:'';
 
+				console.log('==== IF 1 ====');
+
 				if(phone_number=='' && user_name!=''&& previous_job !='' && years_of_experience ==''){
+					console.log('==== IF 2 ====');
 					let replies = [
 						{
 							"content_type":"text",
@@ -267,6 +270,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 					sendQuickReply(sender,responseText,replies);
 				}else if(phone_number != '' && user_name != '' && previous_job != '' &&
 					years_of_experience != '' &&job_vacancy != ''){
+						console.log('==== IF 3 ====');
 						let emailContent = 'A new Job enquiery from '+ user_name + 'for the job: '+ job_vacancy+
 						'.<br> Previous job position: '+previous_job+
 						'.<br> Years of experience: '+ years_of_experience+'.'+
@@ -295,6 +299,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 						  sendTextMessage(sender, responseText);
 
 				}else{
+					console.log('==== IF 4 ====');
 					sendTextMessage(sender, responseText);
 				}
 			}
