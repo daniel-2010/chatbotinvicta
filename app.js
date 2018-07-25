@@ -62,6 +62,7 @@ app.use(bodyParser.json({
 }));
 
 app.use('/webview',webview);
+
 //serve static files in the public directory
 app.use(express.static('public'));
 
@@ -69,6 +70,8 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({
 	extended: false
 }))
+
+app.set('view engine', 'ejs');
 
 // Process application/json
 app.use(bodyParser.json())
