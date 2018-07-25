@@ -15,7 +15,7 @@ const Employment = require("./models/employment");
 
 const userModule = require('./modules/users');
 
-const webviews = require('./routes/webviews');
+const webview = require('./routes/webviews');
 
 
 
@@ -52,7 +52,7 @@ if (!config.EMAIL_TO) { //sending email
 	throw new Error('missing EMAIL_TO');
 }
 
-app.use('/webview',webviews);
+
 
 app.set('port', (process.env.PORT || 5000))
 
@@ -72,6 +72,7 @@ app.use(bodyParser.urlencoded({
 // Process application/json
 app.use(bodyParser.json())
 
+app.use('/webview',webview);
 
 
 
