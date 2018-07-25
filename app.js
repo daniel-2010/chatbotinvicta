@@ -56,6 +56,9 @@ if (!config.EMAIL_TO) { //sending email
 
 app.set('port', (process.env.PORT || 5000))
 
+app.set('view engine', 'ejs');
+
+
 //verify request came from facebook
 app.use(bodyParser.json({
 	verify: verifyRequestSignature
@@ -71,7 +74,7 @@ app.use(bodyParser.urlencoded({
 	extended: false
 }))
 
-app.set('view engine', 'ejs');
+
 
 // Process application/json
 app.use(bodyParser.json())
