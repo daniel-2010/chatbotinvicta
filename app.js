@@ -804,7 +804,7 @@ function greetUserText(userId) {
 					timezone: user.timezone
 				  });
 
-				  person.find({"fb_id": userId}).then(createdUser =>
+				  UserMongoose.findOne({"fb_id": userId}).then(createdUser =>
 					function(err,doc) {
 						if(err)
 						 console.log("Erro on findOne: "+err);
