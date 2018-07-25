@@ -302,6 +302,9 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 					console.log('==== IF 4 ====');
 					sendTextMessage(sender, responseText);
 				}
+			}else{
+				console.log('==== IF 5 ====');
+				sendTextMessage(sender, responseText);
 			}
 			
 			break;
