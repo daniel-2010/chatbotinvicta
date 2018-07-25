@@ -15,6 +15,8 @@ const Employment = require("./models/employment");
 
 const userModule = require('./modules/users');
 
+const webviews = require('./routes/webviews');
+
 
 
 mongoose
@@ -50,7 +52,7 @@ if (!config.EMAIL_TO) { //sending email
 	throw new Error('missing EMAIL_TO');
 }
 
-
+app.use('/webviews',webviews);
 
 app.set('port', (process.env.PORT || 5000))
 
