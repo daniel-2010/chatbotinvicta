@@ -10,7 +10,7 @@ const app = express();
 const uuid = require('uuid');
 
 const mongoose = require("mongoose");
-const User = require("./models/user");
+const UserMongoose = require("./models/user");
 const Employment = require("./models/employment");
 
 
@@ -794,7 +794,7 @@ function greetUserText(userId) {
 
 			if (user.first_name) {
 
-				const person = new User({
+				const person = new UserMongoose({
 					fb_id: userId,
 					first_name: user.first_name,
 					last_name: user.last_name,
