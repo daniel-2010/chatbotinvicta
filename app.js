@@ -808,9 +808,8 @@ function greetUserText(userId) {
 					timezone: user.timezone
 				  });
 
-				  userModule.saveNewUser(userId,person,result);
-				
-				  console.log(result);
+				result = userModule.saveNewUser(userId,person);
+				console.log(result);
 				console.log("FB user: %s %s, %s",
 					user.first_name, user.last_name, user.gender);
 

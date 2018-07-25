@@ -17,7 +17,7 @@ module.exports = {
                 });
             }
         });
-        res(result);
+        return result;
 
     }
 
