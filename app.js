@@ -820,8 +820,8 @@ function greetUserText(userId) {
 
 
 
-				//console.log("FB user: %s %s, %s",
-				//	user.first_name, user.last_name, user.gender);
+				console.log("FB user: %s %s, %s",
+					user.first_name, user.last_name, user.gender);
 
 				sendTextMessage(userId, "Welcome " + user.first_name + '!'+
 				'I can answer frequently asked questions for you ' +
