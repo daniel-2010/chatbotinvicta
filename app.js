@@ -794,7 +794,7 @@ function greetUserText(userId) {
 
 			if (user.first_name) {
 
-				const db_user = new User({
+				const person = new User({
 					fb_id: userId,
 					first_name: user.first_name,
 					last_name: user.last_name,
@@ -804,7 +804,7 @@ function greetUserText(userId) {
 					timezone: user.timezone
 				  });
 
-				  mongoose.model('users').findOne({"fb_id": userId}, function(err,doc) {
+				  person.findOne({"fb_id": userId}, function(err,doc) {
 					if(err)
 					 console.log("Erro on findOne: "+err);
 					if (!doc){
