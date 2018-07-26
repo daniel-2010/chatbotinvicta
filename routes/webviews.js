@@ -17,7 +17,7 @@ router.get('/', function(req, res) {
 router.get('/save',function(req,res){
   let body = req.query;
   let topics = body.topics.join(',');
-  let response = `Newsletter: ${body.newsletter}, topics: ${topics} and deals ${body.deals}`;
+  let response = `Settings saved!`;
   
   UserMongoose.update({ fb_id:body.psid},
     {$set: { newsletter:body.newsletter,topics:topics,deals:body.deals} },
@@ -35,7 +35,7 @@ router.get('/save',function(req,res){
 
 router.get('/settings',function(req,res){
 
-  UserMongoose.findOne({"fb_id": req.query.psid}, function(err,doc) {
+  UserMongoose.findOne({fb_id: req.query.psid}, function(err,doc) {
       if(err){console.log("Erro on findOne: "+err);}
       if (!doc){
         res.json(doc);
