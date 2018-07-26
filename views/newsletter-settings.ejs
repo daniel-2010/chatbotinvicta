@@ -20,19 +20,19 @@
                 <h5>Frequency</h5>
                 <p>
                     <label>
-                      <input type="radio" name="newsletter" value="1" checked />
+                      <input type="radio" name="newsletter" id="newsletter_1" value="1" checked />
                       <span>Weekly</span>
                     </label>
                 </p>
                 <p>
                     <label>
-                      <input type="radio" name="newsletter" value="2" checked />
+                      <input type="radio" name="newsletter" id="newsletter_2" value="2" checked />
                       <span>Daily</span>
                     </label>
                 </p>
                 <p>
                     <label>
-                      <input type="radio" name="newsletter" value="0" checked />
+                      <input type="radio" name="newsletter" id="newsletter_0" value="0" checked />
                       <span>Never</span>
                     </label>
                 </p>
@@ -59,13 +59,13 @@
                 <h5>Send Ideals</h5>
                 <p>
                     <label>
-                      <input type="radio" name="deals" value="1" checked />
+                      <input type="radio" name="deals" id="deals_1" value="1" />
                       <span>Yes</span>
                     </label>
                 </p>
                 <p>
                     <label>
-                      <input type="radio" name="deals" value="0" checked />
+                      <input type="radio" name="deals" id="deals_0"  value="0" />
                       <span>No</span>
                     </label>
                 </p>
@@ -92,7 +92,7 @@
                     function success(thread_context){
                         $('#psid').val(thread_context.psid);
                         $.getJSON('/webview/settings?psid='+thread_context.psid, function (data){
-                            $('#newsletter_'+data.newslater).prop('checked',true);
+                            $('#newsletter_'+data.newsletter).prop('checked',true);
                             $('#deals_'+data.deals).prop('checked',true);
                             if(data.topic){
                                 let topics = data.topics.split(',');
