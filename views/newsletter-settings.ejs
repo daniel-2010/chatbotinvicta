@@ -91,20 +91,31 @@
                 MessengerExtensions.getContext('285946188630983', 
                     function success(thread_context){
                         $('#psid').val(thread_context.psid);
+                        $.getJSON('/webview/settings?psid='+thread_context.psid, function (data){
+                            $('#newsletter_'+data.newslater).prop('checked',true);
+                            $('#deals_'+data.deals).prop('checked',true);
+                            if(data.topic){
+                                let topics = data.topics.split(',');
+                                topics.forEach(function(topic){
+                                    $('#topic_'+topic).prop('checked',true);
+                                })
+                            }
+                        });
                     },
                     function error(err){
                         // error
                     }
                 );
+
+                $('#submitButton').click(function(){
+                    MessengerExtensions.requestCloseBrowser(function success() {
+                        // webview closed
+                    }, function error(err) {
+                        // an error occurred
+                    });
+                })
             };
 
-            $('#submitButton').click(function(){
-                MessengerExtensions.requestCloseBrowser(function success() {
-                    // webview closed
-                }, function error(err) {
-                    // an error occurred
-                });
-            })
             
         </script>
     </body>
