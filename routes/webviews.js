@@ -37,7 +37,7 @@ router.get('/settings',function(req,res){
 
   UserMongoose.findOne({"fb_id": req.query.psid}, function(err,doc) {
       if(err){console.log("Erro on findOne: "+err);}
-      if (!doc){
+      if (doc.length > 0){
         res.json(doc);
         console.log("====DOC: "+doc);
       }else{
