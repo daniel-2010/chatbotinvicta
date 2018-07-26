@@ -4,6 +4,12 @@
         <title>Udemy demo webview</title>
         <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximun-scale-1">
         <link rel="stylesheet" href="/webview.css">
+         <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+      
     </head>
     <body>
         <div class="container">
@@ -19,10 +25,20 @@
                 <input type="checkbox" name="topics[]" value="IPad">IPad <br>
                 <input type="checkbox" name="topics[]" value="Mac">Mac <br>
                 <h5>Send Ideals</h5>
-                <input type="radio" name="deals" value="1">Yes <br>
-                <input type="radio" name="deals" value="0">No <br>
-
-                <button id="submitButton" type="submit" value="submit">Submit</button>
+                <p>
+                    <label>
+                      <input type="radio" name="deals" value="1" checked />
+                      <span>Yes</span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                      <input type="radio" name="deals" value="0" checked />
+                      <span>No</span>
+                    </label>
+                </p>
+                <button class="waves-effect waves-light btn" id="submitButton" type="submit" value="submit">Submit <i class="material-icons right">send</i></button>
+                
             </form>
         </div>
 
