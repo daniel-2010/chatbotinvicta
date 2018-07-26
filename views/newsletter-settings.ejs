@@ -94,10 +94,10 @@
                         $.getJSON('/webview/settings?psid='+thread_context.psid, function (data){
                             $('#newsletter_'+data.newsletter).prop('checked',true);
                             $('#deals_'+data.deals).prop('checked',true);
-                            if(data.topic){
+                            if(data.topics){
                                 let topics = data.topics.split(',');
                                 topics.forEach(function(topic){
-                                    $('#topic_'+topic).prop('selected',true);
+                                    $('#topic_'+topic).prop('checked',true);
                                 })
                             }
                         });
