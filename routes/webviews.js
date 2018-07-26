@@ -1,7 +1,7 @@
 
 var express = require('express');
 var router = express.Router();
-const fbservice = require('..fb-service/fb-service');
+const fbservice = require('../fb-service/fb-service');
 router.get('/', function(req, res) {
   //res.send('Birds home page');
   res.render('../views/newsletter-settings');
