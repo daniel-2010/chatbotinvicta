@@ -10,7 +10,7 @@ router.get('/', function(req, res) {
 router.get('/save',function(req,res){
   let body = req.query;
   let topics = body.topics.join(',');
-  let response = 'Newsletter: ${body.newsletter}, topics: ${topics} and deals ${body.deals}';
+  let response = `Newsletter: ${body.newsletter}, topics: ${topics} and deals ${body.deals}`;
   
   fbservice.sendTextMessage(body.psid,response);
 })
