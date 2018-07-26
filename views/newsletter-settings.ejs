@@ -7,7 +7,8 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
 
-
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
       
     </head>
@@ -89,7 +90,7 @@
             window.extAsyncInit = function() {
                 MessengerExtensions.getContext('285946188630983', 
                     function success(thread_context){
-                        document.getElementById('psid').value = thread_context.psid;
+                        $('#psid').val(thread_context.psid);
                     },
                     function error(err){
                         // error
@@ -97,7 +98,7 @@
                 );
             };
 
-            document.getElementById('submitButton').addEventListener('click',function(){
+            $('#submitButton').click(function(){
                 MessengerExtensions.requestCloseBrowser(function success() {
                     // webview closed
                 }, function error(err) {

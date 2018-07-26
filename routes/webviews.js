@@ -4,6 +4,7 @@ var express = require('express');
 const mongoose = require("mongoose");
 const UserMongoose = require("../models/user");
 
+
 var router = express.Router();
 
 
@@ -31,8 +32,17 @@ router.get('/save',function(req,res){
   
   fbservice.sendTextMessage(body.psid,response);
 });
+
 router.get('/settings',function(req,res){
-  
+
+  UserMongoose.findOne({"fb_id": req.query.psid}, function(err,doc) {
+      if(err){console.log("Erro on findOne: "+err);}
+      if (!doc){
+        res.json(doc);
+      }else{
+        res.json([]);
+      }
+  });
 });
 
 module.exports = router;
