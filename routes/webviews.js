@@ -41,7 +41,7 @@ router.get('/settings',function(req,res){
         res.json(doc);
         console.log("====DOC: "+doc);
       }else{
-        console.log('====No doc==== psid:'+req.query.psid);
+        console.log('====No doc==== psid:'+req.query.psid+doc);
         res.json([]);
       }
   });
