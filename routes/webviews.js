@@ -35,13 +35,13 @@ router.get('/save',function(req,res){
 
 router.get('/settings',function(req,res){
 
-  UserMongoose.findOne({fb_id: req.query.psid}, function(err,doc) {
+  UserMongoose.findOne({"fb_id": req.query.psid}, function(err,doc) {
       if(err){console.log("Erro on findOne: "+err);}
       if (!doc){
         res.json(doc);
         console.log("====DOC: "+doc);
       }else{
-        console.log('====No doc====');
+        console.log('====No doc==== psid:'+req.query.psid);
         res.json([]);
       }
   });
