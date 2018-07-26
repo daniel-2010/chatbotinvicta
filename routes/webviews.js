@@ -39,7 +39,9 @@ router.get('/settings',function(req,res){
       if(err){console.log("Erro on findOne: "+err);}
       if (!doc){
         res.json(doc);
+        console.log("====DOC: "+doc);
       }else{
+        console.log('====No doc====');
         res.json([]);
       }
   });
