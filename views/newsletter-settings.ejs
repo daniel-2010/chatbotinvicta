@@ -9,6 +9,7 @@
         <div class="container">
             <h3>Newsletter settings</h3>
             <form action="/webview/save" method="get">
+                <input type="hidden" name="psid" id="psid">
                 <h5>Frequency</h5>
                 <input type="radio" name="Newsletter" value="1">Weekly <br>
                 <input type="radio" name="Newsletter" value="2">Daily <br>
@@ -36,7 +37,14 @@
             }(document, 'script', 'Messenger'));
 
             window.extAsyncInit = function() {
-            // the Messenger Extensions JS SDK is done loading 
+                MessengerExtensions.getContext('285946188630983', 
+                    function success(thread_context){
+                        document.getElementById('psid').value = thread_context.psid;
+                    },
+                    function error(err){
+                        // error
+                    }
+                );
             };
 
             document.getElementById('submitButton').addEventListener('click',function(){
