@@ -7,7 +7,22 @@
     </head>
     <body>
         <div class="container">
-            SAMPLE WEBVIEW
+            <h3>Newsletter settings</h3>
+            <form action="/webview/save" method="get">
+                <h5>Frequency</h5>
+                <input type="radio" name="Newsletter" value="1">Weekly <br>
+                <input type="radio" name="Newsletter" value="2">Daily <br>
+                <input type="radio" name="Newsletter" value="0">Never <br>
+                <h5> Topics</h5>
+                <input type="checkbox" name="topics[]" value="IPhone">IPhone <br>
+                <input type="checkbox" name="topics[]" value="IPad">IPad <br>
+                <input type="checkbox" name="topics[]" value="Mac">Mac <br>
+                <h5>Send Ideals</h5>
+                <input type="radio" name="Newsletter" value="1">Yes <br>
+                <input type="radio" name="Newsletter" value="0">No <br>
+
+                <button id="submitButton" type="submit" value="submit"></button>
+            </form>
         </div>
 
 
@@ -23,6 +38,15 @@
             window.extAsyncInit = function() {
             // the Messenger Extensions JS SDK is done loading 
             };
+
+            document.getElementById('submitButton').addEventListener('click',function(){
+                MessengerExtensions.requestCloseBrowser(function success() {
+                    // webview closed
+                }, function error(err) {
+                    // an error occurred
+                });
+            })
+            
         </script>
         
     </body>
