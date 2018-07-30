@@ -8,7 +8,6 @@ module.exports = {
         UserMongoose.findOne({"fb_id": userId}, function(err,doc) {
             if(err){
              console.log("Erro on findOne: "+err);
-             
             }
             if (!doc){
                 person.save().then(createdPost => {

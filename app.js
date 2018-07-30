@@ -21,7 +21,6 @@ const webview = require('./routes/webviews');
 
 mongoose
   .connect("mongodb://"+config.MONGODB_USER+":"+config.MONGODB_PASSWORD+"@ds255451.mlab.com:55451/heroku_81hpctnn")
-  
   .then(() => {console.log("======= Connected to database! =======");})
   .catch(() => {console.log("======= Connection failed! =======");});
 
@@ -824,9 +823,27 @@ function greetUserText(userId) {
 				console.log("FB user: %s %s, %s",
 					user.first_name, user.last_name, user.gender);
 
-				sendTextMessage(userId, "Welcome " + user.first_name + '!'+
-				'I can answer frequently asked questions for you ' +
-				'and I perform job intervies. What can I help you with?');
+				sendTextMessage(userId, "Olá " + user.first_name + '!');
+
+				sendTypingOn(sender);
+				//ask what user wants to do next
+				setTimeout(function(){
+					let buttons = [
+						{
+							title:"Ver cardápio e/ou fazer um pedido!",
+							type:"web_url",
+							url:"https://pizzariainvicta.herokuapp.com/webview",
+							webview_height_ratio: "tall",
+							messenger_extensions: true
+						},
+						{
+							type: 'postback',
+							title: "Fazer outra pergunta!",
+							payload: "CHAT"
+						}
+					]
+					sendButtonMessage(sender, "Qual sua melhor opção?",buttons)
+				},3000)
 				
 			} else {
 				console.log("Cannot get data for fb user with id",
@@ -897,7 +914,7 @@ function receivedPostback(event) {
 			sendToApiAi(senderID,"Do you have job opening?");
 		break;
 		case 'CHAT':
-		sendTextMessage(senderID, "I love chatting too. Do you have any other questions for me?");
+		sendTextMessage(senderID, "Em que podemos te ajudar?");
 		break;
 
 		default:

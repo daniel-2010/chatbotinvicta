@@ -2,4 +2,12 @@ curl -X POST -H "Content-Type: application/json" -d '{
     "get_started":{
     "payload":"GET_STARTED"
   }
+}' "https://graph.facebook.com/v2.6/me/messenger_profile?access_token=EAAalyJPcCX8BAIlIfaQUgboBQviiEbbufDyZAQpuierCK1sfZCcq6FGKPD0PLIk3Y7LqnuDUjqoUDxZBG1zdMyD70HLt4AcgiMgPgnN3okbG6O9h2Fa6dEmTAGY2umw8ftPeNzBawfZBKzY2blj7KIRuiKEzmcP7aeaLDQto9wZDZD"
+
+
+
+curl -X POST -H "Content-Type: application/json" -d '{
+    "get_started":{
+    "payload":"GET_STARTED"
+  }
 }' "https://graph.facebook.com/v2.6/me/messenger_profile?access_token=EAAEEEQjZCi8cBAPlwSEiaiXd29TBTPaApOEVidYjky49AyJxaQF95GrvkMZBxZBMANhZC7uAPwKDTKanYGZC4cPnftlbaIXSMwPPi8rbIZBt9EbSjdcIMZCK9yLj6OpfdB6tjx1JRZBxekp4ZAO0ZCMTrcPbAQT6B4FVq6UZArDCtz7YG08BDch50cj"
