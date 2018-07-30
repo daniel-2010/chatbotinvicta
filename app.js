@@ -13,7 +13,7 @@ const mongoose = require("mongoose");
 const UserMongoose = require("./models/user");
 const Employment = require("./models/employment");
 
-const userModule = require('./modules/users');
+const userModule = require('./routes/users');
 
 const webview = require('./routes/webviews');
 
