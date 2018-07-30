@@ -11,16 +11,29 @@ var router = express.Router();
 var products = [];
 
 const fbservice = require('../fb-service/fb-service');
+router.get('/', function(req, res) {
+
+  UserMongoose.find({"p": req.query.psid}, function(err,doc) {
+    if(err){
+      console.log("Erro on findOne: "+err);
+      this.products = doc;
+    }
+  });
+  res.render('../views/cardapio',this.products);
+});
+
+
 router.get('/get_products/', function(req, res) {
 
   produtcModel.find({"status_product": "ativo"}, function(err,doc) {
     if(err){
       console.log("Erro on find products: "+err);
+      res.json([]);
     }else{
-      this.products = doc;
+      res.json(doc);
     }
   });
-  res.json(this.products);
+  
 });
 
 router.get('/save',function(req,res){
