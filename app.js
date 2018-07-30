@@ -12,6 +12,7 @@ const uuid = require('uuid');
 const mongoose = require("mongoose");
 const UserMongoose = require("./models/user");
 const Employment = require("./models/employment");
+const ProductModel = require("./models/product");
 
 const userModule = require('./routes/users');
 
@@ -112,6 +113,22 @@ app.get('/webhook/', function (req, res) {
  * https://developers.facebook.com/docs/messenger-platform/product-overview/setup#subscribe_app
  *
  */
+//###########################################
+ //Apenas para popular a collection products
+app.get('/add_products/',function(req,res){
+
+	const product = new ProductModel({
+		nome_product: 'À MODA',
+		receita_product: '(molho, presunto, calabresa, palmito, mussarela, catupiry, frango, milho, batata palha e orégano)',
+		tipo_product: 'Pizzas Salgadas',
+		preco_product: '28.99'
+	});
+	product.save().then(createdPost => {
+		res.send("Product added successfully");
+	});
+})
+//###########################################
+
 app.post('/webhook/', function (req, res) {
 	var data = req.body;
 	console.log(JSON.stringify(data));
