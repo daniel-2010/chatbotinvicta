@@ -117,15 +117,40 @@ app.get('/webhook/', function (req, res) {
  //Apenas para popular a collection products
 app.get('/add_products/',function(req,res){
 
-	const product = new ProductModel({
-		nome_product: 'À MODA',
-		receita_product: '(molho, presunto, calabresa, palmito, mussarela, catupiry, frango, milho, batata palha e orégano)',
-		tipo_product: 'Pizzas Salgadas',
-		preco_product: '28.99'
+	let product = new ProductModel({
+		nome_product: 'MUSSARELA',
+		receita_product: '(molho,mussarela e tomate)',
+		tipo_product: 'Pizzas Salgadas',preco_product: '28.99'
 	});
-	product.save().then(createdPost => {
-		res.send("Product added successfully");
+	product.save().then(r => {res.send("Product added successfully");});
+
+	product = new ProductModel({
+		nome_product: 'TRADICIONAL',
+		receita_product: '(molho, presunto, mussarela, milho, tomate e orégano)',
+		tipo_product: 'Pizzas Salgadas',preco_product: '28.99'
 	});
+	product.save().then(r => {res.send("Product added successfully");});
+
+	product = new ProductModel({
+		nome_product: 'CALABRESA',
+		receita_product: '(molho, presunto, mussarela, calabresa, tomate e orégano)',
+		tipo_product: 'Pizzas Salgadas',preco_product: '28.99'
+	});
+	product.save().then(r => {res.send("Product added successfully");});
+
+	product = new ProductModel({
+		nome_product: 'CALABRESA COM CATUPIRY',
+		receita_product: '(molho, calabresa, catupiry e cebola)',
+		tipo_product: 'Pizzas Salgadas',preco_product: '28.99'
+	});
+	product.save().then(r => {res.send("Product added successfully");});
+
+	product = new ProductModel({
+		nome_product: 'TOSCANA',
+		receita_product: '(molho, presunto, calabresa, palmito, mussarela, tomate e orégano)',
+		tipo_product: 'Pizzas Salgadas',preco_product: '28.99'
+	});
+	product.save().then(r => {res.send("Product added successfully");});
 })
 //###########################################
 
