@@ -33,37 +33,41 @@
                             </label>
                         </div>
                         <div id="product_{{x._id}}_div" style="display: none" class="col s12">
-                            <div class="input-field col s6">
-                                <select id="select1">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                </select>
-                                <label>QTD</label>
-                            </div>
-                            <div class="input-field col s6">
-                                <select multiple>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                </select>
-                                <label>O que tirar</label>
-                            </div>
-                            <div class="input-field col s6">
-                                <select multiple>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                </select>
-                                <label>Adicionais</label>
-                            </div>
-                            <div class="input-field col s6">
-                                <select >
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                </select>
-                                <label>Bordas Recheadas</label>
+                            <div class="row">
+
+
+                                <div class="input-field col s6">
+                                    <select>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                    </select>
+                                    <label>QTD</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <select multiple>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                    </select>
+                                    <label>O que tirar?</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <select multiple>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                    </select>
+                                    <label>Adicionais</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <select>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                    </select>
+                                    <label>Bordas Recheadas</label>
+                                </div>
                             </div>
                         </div>
 
@@ -134,7 +138,7 @@
     </script>
 
     <script>
-        $('#select1').formSelect();
+        $('select').formSelect();
         function showOptions(idCheckbox) {
             var e = $(idCheckbox).attr('id');
             if ($("#" + e).prop("checked")) {
