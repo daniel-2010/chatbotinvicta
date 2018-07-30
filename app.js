@@ -244,7 +244,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 				}
 			]
 			sendButtonMessage(sender, "What would you like to do next?",buttons)
-		},3000)
+		},1000)
 
 		break;
 		
