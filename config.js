@@ -3,7 +3,7 @@ module.exports = {
     FB_VERIFY_TOKEN: 'this_is_my_large_password_for_the_bot',
     API_AI_CLIENT_ACCESS_TOKEN: 'f216f61b62ae4460b2cf0c0d6e9969f5',
     FB_APP_SECRET: '796e6e33b9f1ae9ffe2d4a339e30c7de',
-    SERVER_URL: "https://pizzbotchat.herokuapp.com/",
+    SERVER_URL: "https://pizzariainvicta.herokuapp.com/",
     SENGRID_API_KEY: '',
     EMAIL_FROM: 'daniel-2.010@hotmail.com',
     EMAIL_TO: 'daniel-2.010@hotmail.com',
