@@ -16,6 +16,7 @@ router.get('/get_products/', function(req, res) {
   produtcModel.find({"status_product": "ativo"}, function(err,doc) {
     if(err){
       console.log("Erro on find products: "+err);
+    }else{
       this.products = doc;
     }
   });
