@@ -1,123 +1,125 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Cardápio Pizzaria Invicta</title>
-        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximun-scale-1">
-        <link rel="stylesheet" href="/webview.css">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
 
-        
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+<head>
+    <title>Cardápio Pizzaria Invicta</title>
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximun-scale-1">
+    <link rel="stylesheet" href="/webview.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
 
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-      
-    </head>
-    <body>
-        <div class="container">
-            <div ng-app="myApp" ng-controller="myCtrl">
-                    <form action="/webview/save" method="get">
-                        <input type="hidden" name="psid" id="psid">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+</head>
+
+<body>
+    <div class="container">
+        <div ng-app="myApp" ng-controller="myCtrl">
+            <form action="/webview/save" method="get">
+                <input type="hidden" name="psid" id="psid">
                 <p>Faça agora seu pedido</p>
-                <div  ng-repeat="x in products">
-                    <div   class="row">
-                            
-                        <div class="col s12" >
+                <div ng-repeat="x in products">
+                    <div class="row">
+                        <div class="col s12">
                             <label>
-                            <input type="checkbox" name="products[]" id="product_{{x._id}}" onChange="showOptions(this)" value="IPhone" />
-                            <span>{{x.nome_product}} 
-                            <small>{{x.receita_product}}</small></span>
+                                <input type="checkbox" name="products[]" id="product_{{x._id}}" onChange="showOptions(this)" value="IPhone" />
+                                <span>{{x.nome_product}}
+                                    <small>{{x.receita_product}}</small>
+                                </span>
                             </label>
                         </div>
-
                         <div id="product_{{x._id}}_div" style="display: none" class="col s12">
-                                <div class="input-field col s12">
-                                        <select id="qtd">
-                                          <option value="" disabled selected>Choose your option</option>
-                                          <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        </select>
-                                        <label>Materialize Select</label>
-                                      </div>
+                            <div class="input-field col s12">
+                                <select>
+                                    <option value="" disabled selected>Choose your option</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                </select>
+                                <label>Materialize Select</label>
+                            </div>
                         </div>
-
                     </div>
                 </div>
-                        
-            </div>
-
-            
-            
                 <button class="waves-effect waves-light btn" id="submitButton" type="submit" value="submit">
-                    Submit 
+                    Submit
                     <i class="material-icons right">send</i>
                 </button>
-                
-                </form>
-            </div>
-        <script>
-            var app = angular.module('myApp', []);
-            app.controller('myCtrl', function($scope, $http) {
-                $http.get("webview/get_products")
-                .then(function(response) {
+        
+            </form>
+        </div>
+
+
+
+
+    </div>
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl', function ($scope, $http) {
+            $http.get("webview/get_products")
+                .then(function (response) {
                     $scope.products = response.data;
                 });
-            });
-            </script> 
+        });
+    </script>
 
-        <script>
-            (function(d, s, id){
+    <script>
+        (function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) {return;}
+            if (d.getElementById(id)) { return; }
             js = d.createElement(s); js.id = id;
             js.src = "//connect.facebook.net/en_US/messenger.Extensions.js";
             fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'Messenger'));
+        }(document, 'script', 'Messenger'));
 
-            window.extAsyncInit = function() {
-                MessengerExtensions.getContext('285946188630983', 
-                    function success(thread_context){
-                        $('#psid').val(thread_context.psid);
-                        $.getJSON('/webview/settings?psid='+thread_context.psid, function (data){
-                            $('#newsletter_'+data.newsletter).prop('checked',true);
-                            $('#deals_'+data.deals).prop('checked',true);
-                            if(data.topics){
-                                let topics = data.topics.split(',');
-                                topics.forEach(function(topic){
-                                    $('#topic_'+topic).prop('checked',true);
-                                })
-                            }
-                        });
-                    },
-                    function error(err){
-                        // error
-                    }
-                );
-
-                $('#submitButton').click(function(){
-                    MessengerExtensions.requestCloseBrowser(function success() {
-                        // webview closed
-                    }, function error(err) {
-                        // an error occurred
+        window.extAsyncInit = function () {
+            MessengerExtensions.getContext('285946188630983',
+                function success(thread_context) {
+                    $('#psid').val(thread_context.psid);
+                    $.getJSON('/webview/settings?psid=' + thread_context.psid, function (data) {
+                        $('#newsletter_' + data.newsletter).prop('checked', true);
+                        $('#deals_' + data.deals).prop('checked', true);
+                        if (data.topics) {
+                            let topics = data.topics.split(',');
+                            topics.forEach(function (topic) {
+                                $('#topic_' + topic).prop('checked', true);
+                            })
+                        }
                     });
-                });
-                $('#qtd').formSelect();
-                
-            };   
-            
-        </script>
+                },
+                function error(err) {
+                    // error
+                }
+            );
 
-        <script>
-                function showOptions(idCheckbox){
-                    var e = $(idCheckbox).attr('id');
-                    if($("#"+e).prop("checked")) {
-                      $("#"+e+'_div').show();
-                    } else {
-                      $("#"+e+'_div').hide();
-                    }
-                  };
-        </script>
-    </body>
+            $('#submitButton').click(function () {
+                MessengerExtensions.requestCloseBrowser(function success() {
+                    // webview closed
+                }, function error(err) {
+                    // an error occurred
+                });
+            });
+            
+
+        };
+
+    </script>
+
+    <script>
+        $('select').formSelect();
+        function showOptions(idCheckbox) {
+            var e = $(idCheckbox).attr('id');
+            if ($("#" + e).prop("checked")) {
+                $("#" + e + '_div').show();
+            } else {
+                $("#" + e + '_div').hide();
+            }
+        };
+    </script>
+</body>
+
 </html>
