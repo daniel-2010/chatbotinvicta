@@ -16,6 +16,13 @@
     </head>
     <body>
         <div class="container">
+            <div ng-app="myApp" ng-controller="myCtrl">
+
+                <p>Today's welcome message is:</p>
+                <h1>{{myWelcome}}</h1>
+                        
+            </div>
+
             <h4>Newsletter settings</h4>
             <form action="/webview/save" method="get">
                 <input type="hidden" name="psid" id="psid">
@@ -47,7 +54,15 @@
                 
             </form>
         </div>
-
+        <script>
+            var app = angular.module('myApp', []);
+            app.controller('myCtrl', function($scope, $http) {
+                $http.get("webview/get_products")
+                .then(function(response) {
+                    $scope.myWelcome = response.data;
+                });
+            });
+            </script> 
 
         <script>
             (function(d, s, id){
