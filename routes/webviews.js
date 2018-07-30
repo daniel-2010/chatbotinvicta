@@ -3,15 +3,23 @@ var express = require('express');
 
 const mongoose = require("mongoose");
 const UserMongoose = require("../models/user");
+const produtcModel = require("../models/product");
 
 
 var router = express.Router();
 
+var products = [];
 
 const fbservice = require('../fb-service/fb-service');
 router.get('/', function(req, res) {
-  //res.send('Birds home page');
-  res.render('../views/newsletter-settings');
+
+  produtcModel.find({"status": "ativo"}, function(err,doc) {
+    if(err){
+      console.log("Erro on findOne: "+err);
+      this.products = doc;
+    }
+  });
+  res.render('../views/cardapio',this.products);
 });
 
 router.get('/save',function(req,res){
@@ -43,9 +51,6 @@ router.get('/settings',function(req,res){
         res.json(doc);
         console.log("====DOC: "+doc);
       }
-      
-        
-      
   });
 });
 

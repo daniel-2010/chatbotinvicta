@@ -116,7 +116,7 @@ app.get('/webhook/', function (req, res) {
 //###########################################
  //Apenas para popular a collection products
 app.get('/add_products/',function(req,res){
-
+/*
 	let product = new ProductModel({
 		nome_product: 'MUSSARELA',
 		receita_product: '(molho,mussarela e tomate)',
@@ -151,6 +151,7 @@ app.get('/add_products/',function(req,res){
 		tipo_product: 'Pizzas Salgadas',preco_product: '28.99'
 	});
 	product.save().then(r => {res.send("Product added successfully");});
+	*/
 })
 //###########################################
 
