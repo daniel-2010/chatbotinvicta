@@ -825,7 +825,7 @@ function greetUserText(userId) {
 
 				sendTextMessage(userId, "Olá " + user.first_name + '!');
 
-				sendTypingOn(sender);
+				sendTypingOn(userId);
 				//ask what user wants to do next
 				setTimeout(function(){
 					let buttons = [
@@ -842,7 +842,7 @@ function greetUserText(userId) {
 							payload: "CHAT"
 						}
 					]
-					sendButtonMessage(sender, "Qual sua melhor opção?",buttons)
+					sendButtonMessage(userId, "Qual sua melhor opção?",buttons)
 				},3000)
 				
 			} else {
