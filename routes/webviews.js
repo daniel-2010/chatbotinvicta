@@ -11,15 +11,15 @@ var router = express.Router();
 var products = [];
 
 const fbservice = require('../fb-service/fb-service');
-router.get('/', function(req, res) {
+router.get('/get_products/', function(req, res) {
 
   produtcModel.find({"status": "ativo"}, function(err,doc) {
     if(err){
-      console.log("Erro on findOne: "+err);
+      console.log("Erro on find products: "+err);
       this.products = doc;
     }
   });
-  res.render('../views/cardapio',this.products);
+  res.json(this.products);
 });
 
 router.get('/save',function(req,res){
