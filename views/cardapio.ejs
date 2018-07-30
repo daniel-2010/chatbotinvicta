@@ -34,7 +34,7 @@
                         </div>
                         <div id="product_{{x._id}}_div" style="display: none" class="col s12">
                             <div class="input-field col s6">
-                                <select>
+                                <select id="select1">
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -134,7 +134,7 @@
     </script>
 
     <script>
-        $('select').formSelect();
+        $('#select1').formSelect();
         function showOptions(idCheckbox) {
             var e = $(idCheckbox).attr('id');
             if ($("#" + e).prop("checked")) {
