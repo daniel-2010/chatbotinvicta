@@ -33,23 +33,47 @@
                             </label>
                         </div>
                         <div id="product_{{x._id}}_div" style="display: none" class="col s12">
-                            <div class="input-field col s12">
+                            <div class="input-field col s6">
                                 <select>
-                                    <option value="" disabled selected>Choose your option</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
                                 </select>
-                                <label>Materialize Select</label>
+                                <label>QTD</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <select multiple>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                </select>
+                                <label>O que tirar</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <select multiple>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                </select>
+                                <label>Adicionais</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <select >
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                </select>
+                                <label>Bordas Recheadas</label>
                             </div>
                         </div>
+
                     </div>
                 </div>
                 <button class="waves-effect waves-light btn" id="submitButton" type="submit" value="submit">
                     Submit
                     <i class="material-icons right">send</i>
                 </button>
-        
+
             </form>
         </div>
 
@@ -103,7 +127,7 @@
                     // an error occurred
                 });
             });
-            
+
 
         };
 
