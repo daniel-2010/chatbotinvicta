@@ -22,7 +22,7 @@
             <form action="/webview/save" method="get">
                 <input type="hidden" name="psid" id="psid">
                 <p>Faça agora seu pedido</p>
-                
+
                 <div ng-repeat="x in products">
                     <div class="row">
                         <div class="col s12">
@@ -44,7 +44,7 @@
                                     </select>
                                     <label>QTD</label>
                                 </div>
-                                
+
                                 <div class="input-field col s6">
                                     <input type="text" placeholder="Ex.: Tirar Cebola,...">
                                     <label>O que tirar?</label>
@@ -65,14 +65,16 @@
                                     </select>
                                     <label>Bordas Recheadas</label>
                                 </div>
-                                
+
                             </div>
                         </div>
 
                     </div>
                     <script>
-                            $('select').formSelect();
-                        </script>
+                        setTimeout(function () {
+                            $('select').material_select();
+                        }, 1000);
+                    </script>
                 </div>
                 <button class="waves-effect waves-light btn" id="submitButton" type="submit" value="submit">
                     Submit
