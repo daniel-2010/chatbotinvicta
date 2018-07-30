@@ -11,7 +11,8 @@ const userSchema = mongoose.Schema({
   timezone: { type: String},
   newsletter: { type: String},
   topics: { type: String},
-  deals: { type: String}
+  deals: { type: String},
+  data_cadastro_user: { type: Date, default: new Date.now() },
 });
 
 module.exports = mongoose.model("user", userSchema);

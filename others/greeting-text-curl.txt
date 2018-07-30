@@ -9,3 +9,15 @@ curl -X POST -H "Content-Type: application/json" -d '{
   }
 ]
 }' "https://graph.facebook.com/v2.6/me/messenger_profile?access_token=INSERT-ACCESS-TOKEN-HERE"
+
+curl -X POST -H "Content-Type: application/json" -d '{
+  "greeting":[
+  {
+    "locale":"default",
+    "text":"Olá, Bem vindo à Pizzaria Invicta! Fique a vontade para ver nosso cardápio e tirar suas dúvidas!"
+  }, {
+    "locale":"pt_BR",
+    "text":"Olá, Bem vindo à Pizzaria Invicta! Fique a vontade para ver nosso cardápio e tirar suas dúvidas!"
+  }
+]
+}' "https://graph.facebook.com/v2.6/me/messenger_profile?access_token=EAAalyJPcCX8BAIlIfaQUgboBQviiEbbufDyZAQpuierCK1sfZCcq6FGKPD0PLIk3Y7LqnuDUjqoUDxZBG1zdMyD70HLt4AcgiMgPgnN3okbG6O9h2Fa6dEmTAGY2umw8ftPeNzBawfZBKzY2blj7KIRuiKEzmcP7aeaLDQto9wZDZD"
