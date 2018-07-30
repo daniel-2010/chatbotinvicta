@@ -20,13 +20,16 @@
                     <form action="/webview/save" method="get">
                         <input type="hidden" name="psid" id="psid">
                 <p>Faça agora seu pedido</p>
-                <div  ng-repeat="x in products">
+                <div  ng-repeat="x in products"  class="row">
+                    <div class="col s12" >
                     <label>
                     <input type="checkbox" name="products[]" id="product_{{x._id}}" onChange="showOptions(this)" value="IPhone" />
                     <span>{{x.nome_product}} 
                     <small>{{x.receita_product}}</small></span>
-                    </label><br>
-                    <div id="product_{{x._id}}_div" style="display: none">
+                    </label>
+                </div>
+
+                    <div id="product_{{x._id}}_div" style="display: none" class="col s12">
                             <div class="input-field col s12">
                                     <select>
                                       <option value="1">1</option>
