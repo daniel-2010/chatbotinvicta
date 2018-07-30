@@ -18,6 +18,7 @@ router.get('/get_products/', function(req, res) {
       console.log("Erro on find products: "+err);
     }else{
       this.products = doc;
+      console.log('Docs: '+this.products)
     }
   });
   res.json(this.products);
