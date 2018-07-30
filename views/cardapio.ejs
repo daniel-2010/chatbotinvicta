@@ -141,7 +141,7 @@
     </script>
 
     <script>
-        $('select').formSelect();
+        $('select').not('.disabled').formSelect();
         function showOptions(idCheckbox) {
             var e = $(idCheckbox).attr('id');
             if ($("#" + e).prop("checked")) {
