@@ -20,7 +20,8 @@ const webview = require('./routes/webviews');
 
 
 mongoose
-  .connect("mongodb://"+config.MONGODB_USER+":"+config.MONGODB_PASSWORD+"@ds147361.mlab.com:47361/heroku_h63jz5zh")
+  .connect("mongodb://"+config.MONGODB_USER+":"+config.MONGODB_PASSWORD+"@ds255451.mlab.com:55451/heroku_81hpctnn")
+  
   .then(() => {console.log("======= Connected to database! =======");})
   .catch(() => {console.log("======= Connection failed! =======");});
 

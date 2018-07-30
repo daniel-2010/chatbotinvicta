@@ -8,7 +8,7 @@ module.exports = {
     EMAIL_FROM: 'daniel-2.010@hotmail.com',
     EMAIL_TO: 'daniel-2.010@hotmail.com',
     MONGODB_USER: 'root',
-    MONGODB_PASSWORD: 'FI065534'
+    MONGODB_PASSWORD: 'ramon83'
 };
 
 
