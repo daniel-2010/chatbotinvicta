@@ -830,7 +830,7 @@ function greetUserText(userId) {
 				setTimeout(function(){
 					let buttons = [
 						{
-							title:"Ver cardápio e/ou fazer um pedido!",
+							title:"Cardápio/Pedido!",
 							type:"web_url",
 							url:"https://pizzariainvicta.herokuapp.com/webview",
 							webview_height_ratio: "tall",
@@ -838,7 +838,7 @@ function greetUserText(userId) {
 						},
 						{
 							type: 'postback',
-							title: "Fazer outra pergunta!",
+							title: "Outra Pergunta!",
 							payload: "CHAT"
 						}
 					]
