@@ -32,14 +32,15 @@
                         </div>
 
                         <div id="product_{{x._id}}_div" style="display: none" class="col s12">
-                                <div class="input-field">
-                                        <select>
-                                        <option value="1">1</option>
+                                <div class="input-field col s12">
+                                        <select id="qtd">
+                                          <option value="" disabled selected>Choose your option</option>
+                                          <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
                                         </select>
-                                        <label>Qtd</label>
-                                    </div>
+                                        <label>Materialize Select</label>
+                                      </div>
                         </div>
 
                     </div>
@@ -101,13 +102,11 @@
                     }, function error(err) {
                         // an error occurred
                     });
-                })
+                });
+                $('#qtd').formSelect();
                 
             };   
             
-  $(document).ready(function(){
-    $('select').formSelect();
-  });         
         </script>
 
         <script>
