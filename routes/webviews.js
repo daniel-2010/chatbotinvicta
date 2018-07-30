@@ -13,7 +13,7 @@ var products = [];
 const fbservice = require('../fb-service/fb-service');
 router.get('/get_products/', function(req, res) {
 
-  produtcModel.find({"status": "ativo"}, function(err,doc) {
+  produtcModel.find({"status_product": "ativo"}, function(err,doc) {
     if(err){
       console.log("Erro on find products: "+err);
       this.products = doc;
