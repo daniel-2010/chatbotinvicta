@@ -6,7 +6,7 @@ const productSchema = mongoose.Schema({
   receita_product: { type: String },
   tipo_product: { type: String},
   preco_product: { type: Number},
-  data_cadastro_product: { type: Date, default: new Date.now },
+  data_cadastro_product: { type: Date, default: Date.now },
   status_product: {type: String, default: 'ativo'}
 });
 

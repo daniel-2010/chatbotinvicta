@@ -12,7 +12,7 @@ const userSchema = mongoose.Schema({
   newsletter: { type: String},
   topics: { type: String},
   deals: { type: String},
-  data_cadastro_user: { type: Date, default: new Date.now },
+  data_cadastro_user: { type: Date, default: Date.now },
 });
 
 module.exports = mongoose.model("user", userSchema);
