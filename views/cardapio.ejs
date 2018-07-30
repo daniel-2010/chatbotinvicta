@@ -22,7 +22,7 @@
                 <p>Faça agora seu pedido</p>
                 <p  ng-repeat="x in products">
                     <label>
-                    <input type="checkbox" name="products[]" id="product_{{x._id}}" onChange()="showOptions('product_'+{{x._id}})" value="IPhone" />
+                    <input type="checkbox" name="products[]" id="product_{{x._id}}" onChange(showOptions(this)) value="IPhone" />
                     <span>{{x.nome_product}} 
                     <small>{{x.receita_product}}</small></span>
                     </label><br>
@@ -93,10 +93,11 @@
 
         <script>
                 function showOptions(idCheckbox){
-                    if($(idCheckbox).prop("checked")) {
-                      $(idCheckbox+'_div').show();
+                    var e = $(idCheckbox).attr('id');
+                    if($("#"+e).prop("checked")) {
+                      $("#"+e+'_div').show();
                     } else {
-                      $(idCheckbox+'_div').hide();
+                      $("#"+e+'_div').hide();
                     }
                   };
         </script>
