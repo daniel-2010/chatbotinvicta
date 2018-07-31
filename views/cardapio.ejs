@@ -198,15 +198,7 @@
             if (checkbox.length > 0) {
                 checkbox.each(function () {
                     angular.forEach($scope.products, function (value, key) {
-                        if (value._id == $(this).val()) {
-                            this.nome_p = value.nome_product;
-                            this.preco_p = value.preco_product;
-                            this.qtd_p = $('#product_' + $(this).val() + "_qtd").val();
-
-                            resumo = '<table>' +
-                                '<tr><td>' + this.nome_p + '</td><td>' + this.qtd_p + ' x ' + this.preco_product + '</td>' + '</tr>'
-                            '</table>';
-                        }
+                        console.log(value._id);
                     });
                 })
             }
