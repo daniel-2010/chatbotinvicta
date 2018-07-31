@@ -91,9 +91,7 @@
                         <div class="collapsible-body">
                             <div>
                                 <div id="result"></div>
-                                <h6>Resumo: ----
-                                    <br>
-                                </h6>
+                                
                                 <h5>Total: R$30,00</h5>
                             </div>
                             <button class="waves-effect waves-light btn" id="submitButton" type="submit" value="submit">
@@ -187,7 +185,7 @@
        
         function calcular() {
             var checkbox = $('input:checkbox[name^=products]:checked');
-            var resumo = '';
+            var resumo = '<b>Resumo:</b><hr>';
             var nome_p = '';
             var qtd_p = 0;
             var preco_p;
@@ -200,18 +198,17 @@
                 checkbox.each(function () {
                     id_product = $(this).val();
                     angular.forEach($scope.products, function (value, key) {
-                        console.log(value._id);
                         if (value._id === id_product) {
-                            console.log('===>'+id_product);
                             this.nome_p = value.nome_product;
                             this.preco_p = value.preco_product;
                             this.qtd_p = $('#product_' + id_product + "_qtd").val();
 
-                            resumo = '<table>' +
-                                '<tr><td>' + this.nome_p + '</td><td>' + this.qtd_p + ' x ' + this.preco_product + '</td>' + '</tr>'
+                            resumo += '<table>' +
+                                '<tr><td>' + this.nome_p + '</td><td>' + this.qtd_p + ' x ' + this.preco_p + '</td>' + '</tr>'
                             '</table>';
                         }
                     });
+                    resumo += '<hr>'
                 })
             }
             $('#result').html(resumo);
