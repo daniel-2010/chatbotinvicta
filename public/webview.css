@@ -6,3 +6,7 @@ body{
 #submitButton{
     margin-bottom: 10px
 }
+.collapsible-body{
+    padding-left: 0rem !important;
+    padding-right: 0rem  !important;
+}
