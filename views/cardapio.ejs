@@ -187,18 +187,30 @@
        
         function calcular() {
             var checkbox = $('input:checkbox[name^=products]:checked');
-            var resumo = 'df';
+            var resumo = '';
             var nome_p = '';
             var qtd_p = 0;
             var preco_p;
+            var id_product = '';
 
 
             var $scope = angular.element('div[ng-controller="myCtrl"]').scope();
 
             if (checkbox.length > 0) {
                 checkbox.each(function () {
+                    id_product = $(this).val();
                     angular.forEach($scope.products, function (value, key) {
                         console.log(value._id);
+                        if (value._id === id_product) {
+                            console.log('===>'+id_product);
+                            this.nome_p = value.nome_product;
+                            this.preco_p = value.preco_product;
+                            this.qtd_p = $('#product_' + id_product + "_qtd").val();
+
+                            resumo = '<table>' +
+                                '<tr><td>' + this.nome_p + '</td><td>' + this.qtd_p + ' x ' + this.preco_product + '</td>' + '</tr>'
+                            '</table>';
+                        }
                     });
                 })
             }
