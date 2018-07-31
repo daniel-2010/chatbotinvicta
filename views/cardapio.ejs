@@ -183,6 +183,8 @@
                 $("#" + e + '_div').hide();
             }
         };
+
+       
         function calcular() {
             var checkbox = $('input:checkbox[name^=products]:checked');
             var resumo = 'df';
@@ -190,7 +192,8 @@
             var qtd_p = 0;
             var preco_p;
 
-            var $scope = getScope('myCtrl');
+
+            var $scope = angular.element('div[ng-controller="myCtrl"]').scope();
 
             if (checkbox.length > 0) {
                 checkbox.each(function () {
