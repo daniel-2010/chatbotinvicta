@@ -196,7 +196,7 @@
             var $scope = angular.element('div[ng-controller="myCtrl"]').scope();
 
             if (checkbox.length > 0) {
-                resumo += '<div class="row">' +
+                resumo += '<div class="row">';
                 checkbox.each(function () {
                     id_product = $(this).val();
                     angular.forEach($scope.products, function (value, key) {
