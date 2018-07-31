@@ -27,61 +27,65 @@
                         <div class="collapsible-header">
                             <i class="material-icons">filter_drama</i>Cardápio</div>
                         <div class="collapsible-body">
-                            <div ng-repeat="x in products">
-                                <div class="row">
-                                    <div class="col s12">
-                                        <label>
-                                            <input type="checkbox" name="products[]" id="product_{{x._id}}" onChange="showOptions(this)" value="IPhone" />
-                                            <span>{{x.nome_product}}
-                                                <small>{{x.receita_product}}</small>
-                                            </span>
-                                        </label>
-                                    </div>
-                                    <div id="product_{{x._id}}_div" style="display: none" class="col s12">
-                                        <div class="row">
-                                            <div class="input-field col s6">
-                                                <select>
-                                                    <option value="1" selected>1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                </select>
-                                                <label>Qtd.</label>
-                                            </div>
+                            <div class="row">
 
-                                            <div class="input-field col s6">
-                                                <input type="text" placeholder="Ex.: Tirar Cebola,...">
-                                                <label>O que tirar?</label>
-                                            </div>
-                                            <div class="input-field col s6">
-                                                <select multiple>
-                                                    <option value="" selected>Sem adicionais</option>
-                                                    <option value="OVO">OVO - R$4,50</option>
-                                                    <option value="BACON">BACON - R$4,50</option>
-                                                    <option value="PALMITO">PALMITO - R$4,50</option>
-                                                </select>
-                                                <label>Adicionais</label>
-                                            </div>
-                                            <div class="input-field col s6">
-                                                <select>
-                                                    <option value="" selected>Sem borda</option>
-                                                    <option value="BACON-5.00">BACON - R$5,00</option>
-                                                    <option value="CALABRESA-5.00">CALABRESA - R$5,00</option>
-                                                    <option value="CHEDDAR-5.00">CHEDDAR - R$5,00</option>
-                                                </select>
-                                                <label>Bordas Recheadas</label>
-                                            </div>
 
+                                <div ng-repeat="x in products">
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <label>
+                                                <input type="checkbox" name="products[]" id="product_{{x._id}}" onChange="showOptions(this)" value="IPhone" />
+                                                <span>{{x.nome_product}}
+                                                    <small>{{x.receita_product}}</small>
+                                                </span>
+                                            </label>
                                         </div>
+                                        <div id="product_{{x._id}}_div" style="display: none" class="col s12">
+                                            <div class="row">
+                                                <div class="input-field col s6">
+                                                    <select>
+                                                        <option value="1" selected>1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                    </select>
+                                                    <label>Qtd.</label>
+                                                </div>
+
+                                                <div class="input-field col s6">
+                                                    <input type="text" placeholder="Ex.: Tirar Cebola,...">
+                                                    <label>O que tirar?</label>
+                                                </div>
+                                                <div class="input-field col s6">
+                                                    <select multiple>
+                                                        <option value="" selected>Sem adicionais</option>
+                                                        <option value="OVO">OVO - R$4,50</option>
+                                                        <option value="BACON">BACON - R$4,50</option>
+                                                        <option value="PALMITO">PALMITO - R$4,50</option>
+                                                    </select>
+                                                    <label>Adicionais</label>
+                                                </div>
+                                                <div class="input-field col s6">
+                                                    <select>
+                                                        <option value="" selected>Sem borda</option>
+                                                        <option value="BACON-5.00">BACON - R$5,00</option>
+                                                        <option value="CALABRESA-5.00">CALABRESA - R$5,00</option>
+                                                        <option value="CHEDDAR-5.00">CHEDDAR - R$5,00</option>
+                                                    </select>
+                                                    <label>Bordas Recheadas</label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
                                     </div>
+                                    <script>
+                                        setTimeout(function () {
+                                            $('select').formSelect();
+                                        }, 1000);
+
+                                    </script>
 
                                 </div>
-                                <script>
-                                    setTimeout(function () {
-                                        $('select').formSelect();
-                                    }, 1000);
-
-                                </script>
-
                             </div>
                         </div>
 
