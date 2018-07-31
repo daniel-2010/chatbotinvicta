@@ -124,10 +124,12 @@
     </div>
     <script>
         var app = angular.module('myApp', []);
+    
         app.controller('myCtrl', function ($scope, $http) {
             $http.get("webview/get_products")
                 .then(function (response) {
                     $scope.products = response.data;
+                    var products_db =  $scope.products;
                 });
         });
     </script>
@@ -192,7 +194,7 @@
 
             if (checkbox.length > 0) {
                 checkbox.each(function () {
-                    angular.forEach(products, function (value, key) {
+                    angular.forEach(products_db, function (value, key) {
                         if (value._id == $(this).val()) {
                             this.nome_p = value.nome_product;
                             this.preco_p = value.preco_product;
