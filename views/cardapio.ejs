@@ -49,8 +49,8 @@
                                             </div>
 
                                             <div class="input-field col s6">
-                                                <input type="text" placeholder="Ex.: Tirar Cebola,..." name="product_{{x._id}}_obs">
-                                                <label>*Obs.?</label>
+                                                <input type="text" placeholder="Ex.: Tirar Cebola,..." name="product_{{x._id}}_obs" id="product_{{x._id}}_obs">
+                                                <label>*Obs.</label>
                                             </div>
                                             <div class="input-field col s6">
                                                 <select multiple name="product_{{x._id}}_adicionais">
@@ -190,11 +190,13 @@
             var qtd_p = 0;
             var preco_p;
             var id_product = '';
+            var obs = '';
 
 
             var $scope = angular.element('div[ng-controller="myCtrl"]').scope();
 
             if (checkbox.length > 0) {
+                resumo += '<div class="row">' +
                 checkbox.each(function () {
                     id_product = $(this).val();
                     angular.forEach($scope.products, function (value, key) {
@@ -202,13 +204,16 @@
                             this.nome_p = value.nome_product;
                             this.preco_p = value.preco_product;
                             this.qtd_p = $('#product_' + id_product + "_qtd").val();
+                            this.obs = $('#product_' + id_product + "obs").val();
 
-                            resumo += '<table>' +
-                                '<tr><td>' + this.nome_p + '</td><td>' + this.qtd_p + ' x ' + this.preco_p + '</td>' + '</tr>'
-                            '</table>';
+                            resumo += '<div class=" col s8">' + this.nome_p + '</div><div class=" col s4">' + this.qtd_p + ' x ' + this.preco_p + '</div>';
+                            if(this.obs !=''){
+                                resumo += '<div class=" col s12">'+this.obs+'</div>';
+                            }
                         }
                     });
                 })
+                '<hr></div>';
             }
             $('#result').html(resumo);
         }
