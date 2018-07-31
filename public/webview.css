@@ -10,3 +10,6 @@ body{
     padding-left: 0rem !important;
     padding-right: 0rem  !important;
 }
+.col-no-pad{
+    padding: 0;
+}

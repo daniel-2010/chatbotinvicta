@@ -171,6 +171,7 @@
         };
 
     </script>
+    
 
     <script>
         function showOptions(idCheckbox) {
@@ -206,11 +207,11 @@
                             this.qtd_p = $('#product_' + id_product + "_qtd").val();
                             this.obs = $('#product_' + id_product + "_obs").val();
 
-                            resumo += '<div class="col s8">' + this.nome_p + '</div><div class="col s4">' + this.qtd_p + ' x ' + this.preco_p + '</div>';
+                            resumo += '<div class="col s8 col-no-pad">' + this.nome_p + '</div><div class="col s4 col-no-pad">' + this.qtd_p + ' x ' + this.preco_p + '</div>';
                             if(this.obs){
-                                resumo += '<div class=" col s12">*Obs.:<i>'+this.obs+'</i></div>';
+                                resumo += '<div class="col s12 col-no-pad">*Obs.:<i>'+this.obs+'</i></div>';
                             }
-                            resumo += '<div class=" col s12"><hr></div>';
+                            resumo += '<div class=" col s12 col-no-pad"><hr></div>';
                             
                         }
                     });
