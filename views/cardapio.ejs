@@ -40,7 +40,7 @@
                                     <div id="product_{{x._id}}_div" style="display: none" class="col s12">
                                         <div class="row">
                                             <div class="input-field col s6">
-                                                <select name="product_{{x._id}}_qtd" id="product_{{x._id}}_qtd">
+                                                <select name="product_{{x._id}}_qtd" id="product_{{x._id}}_qtd" onchange="calcular()">
                                                     <option value="1" selected>1</option>
                                                     <option value="2">2</option>
                                                     <option value="3">3</option>
@@ -49,11 +49,11 @@
                                             </div>
 
                                             <div class="input-field col s6">
-                                                <input type="text" placeholder="Ex.: Tirar Cebola,..." name="product_{{x._id}}_obs" id="product_{{x._id}}_obs">
+                                                <input type="text" placeholder="Ex.: Tirar Cebola,..." name="product_{{x._id}}_obs" id="product_{{x._id}}_obs" onkeyup="calcular()">
                                                 <label>*Obs.</label>
                                             </div>
                                             <div class="input-field col s6">
-                                                <select multiple name="product_{{x._id}}_adicionais">
+                                                <select multiple name="product_{{x._id}}_adicionais" onchange="calcular()">
                                                     <option value="" selected>Sem adicionais</option>
                                                     <option value="OVO">OVO - R$4,50</option>
                                                     <option value="BACON">BACON - R$4,50</option>
@@ -62,7 +62,7 @@
                                                 <label>Adicionais</label>
                                             </div>
                                             <div class="input-field col s6" name="product_{{x._id}}_borda">
-                                                <select>
+                                                <select onchange="calcular()">
                                                     <option value="" selected>Sem borda</option>
                                                     <option value="BACON-5.00">BACON - R$5,00</option>
                                                     <option value="CALABRESA-5.00">CALABRESA - R$5,00</option>
@@ -92,17 +92,11 @@
                             <div>
                                 <div id="result"></div>
                                 
-                                <h5>Total: R$30,00</h5>
                             </div>
                             <button class="waves-effect waves-light btn" id="submitButton" type="submit" value="submit">
                                 Enviar pedido
                                 <i class="material-icons right">send</i>
                             </button>
-                            <button class="waves-effect waves-light btn" id="submitButton" type="button" onclick="calcular()">
-                                Calcular
-                                <i class="material-icons right">send</i>
-                            </button>
-
                         </div>
                     </li>
 
@@ -175,6 +169,7 @@
 
     <script>
         function showOptions(idCheckbox) {
+            calcular();
             var e = $(idCheckbox).attr('id');
             if ($("#" + e).prop("checked")) {
                 $("#" + e + '_div').show();
@@ -192,6 +187,7 @@
             var preco_p;
             var id_product = '';
             var obs = '';
+            var total= 0;
 
 
             var $scope = angular.element('div[ng-controller="myCtrl"]').scope();
@@ -207,6 +203,8 @@
                             this.qtd_p = $('#product_' + id_product + "_qtd").val();
                             this.obs = $('#product_' + id_product + "_obs").val();
 
+                            this.total += ((+this.preco_p)*(+this.qtd_p));
+
                             resumo += '<div class="col s8 col-no-pad">' + this.nome_p + '</div><div class="col s4 col-no-pad">' + this.qtd_p + ' x ' + this.preco_p + '</div>';
                             if(this.obs){
                                 resumo += '<div class="col s12 col-no-pad">*Obs.:<i>'+this.obs+'</i></div>';
@@ -216,7 +214,8 @@
                         }
                     });
                 })
-                '</div>';
+                '</div>'
+                +'<h5>Total: R$'+this.total+'</h5>';
             }
             $('#result').html(resumo);
         }
