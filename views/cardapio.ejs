@@ -26,21 +26,21 @@
 
                         <div class="collapsible-header">
                             <i class="material-icons">receipt</i>Cardápio</div>
-                        <div class="collapsible-body">
+                        <div class="collapsible-body collapsible-body-cardapio">
                             <div ng-repeat="x in products">
                                 <div class="row">
                                     <div class="col s12">
                                         <label>
                                             <input type="checkbox" name="products[]" id="product_{{x._id}}" onChange="showOptions(this)" value="IPhone" />
                                             <span>{{x.nome_product}}
-                                                <small>{{x.receita_product}}</small>
+                                                <small>{{x.receita_product+" - R$"+x.preco_product}}</small>
                                             </span>
                                         </label>
                                     </div>
                                     <div id="product_{{x._id}}_div" style="display: none" class="col s12">
                                         <div class="row">
                                             <div class="input-field col s6">
-                                                <select>
+                                                <select name="product_{{x._id}}_qtd">
                                                     <option value="1" selected>1</option>
                                                     <option value="2">2</option>
                                                     <option value="3">3</option>
@@ -49,11 +49,11 @@
                                             </div>
 
                                             <div class="input-field col s6">
-                                                <input type="text" placeholder="Ex.: Tirar Cebola,...">
-                                                <label>O que tirar?</label>
+                                                <input type="text" placeholder="Ex.: Tirar Cebola,..." name="product_{{x._id}}_obs">
+                                                <label>*Obs.?</label>
                                             </div>
                                             <div class="input-field col s6">
-                                                <select multiple>
+                                                <select multiple name="product_{{x._id}}_adicionais">
                                                     <option value="" selected>Sem adicionais</option>
                                                     <option value="OVO">OVO - R$4,50</option>
                                                     <option value="BACON">BACON - R$4,50</option>
@@ -61,7 +61,7 @@
                                                 </select>
                                                 <label>Adicionais</label>
                                             </div>
-                                            <div class="input-field col s6">
+                                            <div class="input-field col s6" name="product_{{x._id}}_borda">
                                                 <select>
                                                     <option value="" selected>Sem borda</option>
                                                     <option value="BACON-5.00">BACON - R$5,00</option>
