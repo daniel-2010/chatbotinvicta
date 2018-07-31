@@ -21,106 +21,93 @@
         <div ng-app="myApp" ng-controller="myCtrl">
             <form action="/webview/save" method="get">
                 <input type="hidden" name="psid" id="psid">
-                <p>Faça agora seu pedido</p>
+                <ul class="collapsible">
+                    <li class="active">
+                        <div class="collapsible-header">
+                            <i class="material-icons">filter_drama</i>Cardápio</div>
+                        <div class="collapsible-body">
+                            <div ng-repeat="x in products">
+                                <div class="row">
+                                    <div class="col s12">
+                                        <label>
+                                            <input type="checkbox" name="products[]" id="product_{{x._id}}" onChange="showOptions(this)" value="IPhone" />
+                                            <span>{{x.nome_product}}
+                                                <small>{{x.receita_product}}</small>
+                                            </span>
+                                        </label>
+                                    </div>
+                                    <div id="product_{{x._id}}_div" style="display: none" class="col s12">
+                                        <div class="row">
+                                            <div class="input-field col s6">
+                                                <select>
+                                                    <option value="1" selected>1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                </select>
+                                                <label>Qtd.</label>
+                                            </div>
 
-                <div ng-repeat="x in products">
-                    <div class="row">
-                        <div class="col s12">
-                            <label>
-                                <input type="checkbox" name="products[]" id="product_{{x._id}}" onChange="showOptions(this)" value="IPhone" />
-                                <span>{{x.nome_product}}
-                                    <small>{{x.receita_product}}</small>
-                                </span>
-                            </label>
-                        </div>
-                        <div id="product_{{x._id}}_div" style="display: none" class="col s12">
-                            <div class="row">
-                                <div class="input-field col s6">
-                                    <select>
-                                        <option value="1" selected>1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                    </select>
-                                    <label>Qtd.</label>
-                                </div>
+                                            <div class="input-field col s6">
+                                                <input type="text" placeholder="Ex.: Tirar Cebola,...">
+                                                <label>O que tirar?</label>
+                                            </div>
+                                            <div class="input-field col s6">
+                                                <select multiple>
+                                                    <option value="" selected>Sem adicionais</option>
+                                                    <option value="OVO">OVO - R$4,50</option>
+                                                    <option value="BACON">BACON - R$4,50</option>
+                                                    <option value="PALMITO">PALMITO - R$4,50</option>
+                                                </select>
+                                                <label>Adicionais</label>
+                                            </div>
+                                            <div class="input-field col s6">
+                                                <select>
+                                                    <option value="" selected>Sem borda</option>
+                                                    <option value="BACON-5.00">BACON - R$5,00</option>
+                                                    <option value="CALABRESA-5.00">CALABRESA - R$5,00</option>
+                                                    <option value="CHEDDAR-5.00">CHEDDAR - R$5,00</option>
+                                                </select>
+                                                <label>Bordas Recheadas</label>
+                                            </div>
 
-                                <div class="input-field col s6">
-                                    <input type="text" placeholder="Ex.: Tirar Cebola,...">
-                                    <label>O que tirar?</label>
+                                        </div>
+                                    </div>
+
                                 </div>
-                                <div class="input-field col s6">
-                                    <select multiple>
-                                        <option value="" selected>Sem adicionais</option>
-                                        <option value="OVO">OVO - R$4,50</option>
-                                        <option value="BACON">BACON - R$4,50</option>
-                                        <option value="PALMITO">PALMITO - R$4,50</option>
-                                    </select>
-                                    <label>Adicionais</label>
-                                </div>
-                                <div class="input-field col s6">
-                                    <select>
-                                        <option value="" selected>Sem borda</option>
-                                        <option value="BACON-5.00">BACON - R$5,00</option>
-                                        <option value="CALABRESA-5.00">CALABRESA - R$5,00</option>
-                                        <option value="CHEDDAR-5.00">CHEDDAR - R$5,00</option>
-                                    </select>
-                                    <label>Bordas Recheadas</label>
-                                </div>
+                                <script>
+                                    setTimeout(function () {
+                                        $('select').formSelect();
+                                    }, 1000);
+
+                                </script>
 
                             </div>
                         </div>
-
-                    </div>
-                    <script>
-                        setTimeout(function () {
-                            $('select').formSelect();
-                        }, 1000);
-
-                    </script>
-
-                </div>
-                <div>
-                    <hr>
-                    <h6>Resumo: ----
-                        <br>
-                    </h6>
-                    <h5>Total: R$30,00</h5>
-
-                    <ul class="collapsible">
-                        <li>
-                            <div class="collapsible-header">
-                                <i class="material-icons">filter_drama</i>First</div>
-                            <div class="collapsible-body">
-                                <span>Lorem ipsum dolor sit amet.</span>
+                    </li>
+                    <li>
+                        <div class="collapsible-header">
+                            <i class="material-icons">place</i>Finalizar Pedido</div>
+                        <div class="collapsible-body">
+                            <div>
+                                <h6>Resumo: ----
+                                    <br>
+                                </h6>
+                                <h5>Total: R$30,00</h5>
                             </div>
-                        </li>
-                        <li>
-                            <div class="collapsible-header">
-                                <i class="material-icons">place</i>Second</div>
-                            <div class="collapsible-body">
-                                <span>Lorem ipsum dolor sit amet.</span>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="collapsible-header">
-                                <i class="material-icons">whatshot</i>Third</div>
-                            <div class="collapsible-body">
-                                <span>Lorem ipsum dolor sit amet.</span>
-                            </div>
-                        </li>
-                    </ul>
+                            <button class="waves-effect waves-light btn" id="submitButton" type="submit" value="submit">
+                                Enviar pedido
+                                <i class="material-icons right">send</i>
+                            </button>
+
+                        </div>
+                    </li>
+
+                </ul>
+                <script>
+                    $('.collapsible').collapsible();
+                </script>
 
 
-                    <script>
-                        $('.collapsible').collapsible();
-                    </script>
-
-                    <hr>
-                </div>
-                <button class="waves-effect waves-light btn" id="submitButton" type="submit" value="submit">
-                    Enviar pedido
-                    <i class="material-icons right">send</i>
-                </button>
 
             </form>
         </div>
