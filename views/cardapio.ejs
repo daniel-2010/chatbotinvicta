@@ -81,35 +81,40 @@
                 </div>
                 <div>
                     <hr>
-                    <h6>Resumo: ----<br></h6>
+                    <h6>Resumo: ----
+                        <br>
+                    </h6>
                     <h5>Total: R$30,00</h5>
 
-                    <div class="row">
-                            <div class="col s12 m9 l10">
-                              <div id="introduction" class="section scrollspy">
-                                <p>Content </p>
-                              </div>
-                        
-                              <div id="structure" class="section scrollspy">
-                                <p>Content </p>
-                              </div>
-                        
-                              <div id="initialization" class="section scrollspy">
-                                <p>Content </p>
-                              </div>
+                    <ul class="collapsible">
+                        <li>
+                            <div class="collapsible-header">
+                                <i class="material-icons">filter_drama</i>First</div>
+                            <div class="collapsible-body">
+                                <span>Lorem ipsum dolor sit amet.</span>
                             </div>
-                            <div class="col hide-on-small-only m3 l2">
-                              <ul class="section table-of-contents">
-                                <li><a href="#introduction">Introduction</a></li>
-                                <li><a href="#structure">Structure</a></li>
-                                <li><a href="#initialization">Intialization</a></li>
-                              </ul>
+                        </li>
+                        <li>
+                            <div class="collapsible-header">
+                                <i class="material-icons">place</i>Second</div>
+                            <div class="collapsible-body">
+                                <span>Lorem ipsum dolor sit amet.</span>
                             </div>
-                          </div>
-                          <script>
-                          $('.scrollspy').scrollSpy();
-                          </script>
-                                
+                        </li>
+                        <li>
+                            <div class="collapsible-header">
+                                <i class="material-icons">whatshot</i>Third</div>
+                            <div class="collapsible-body">
+                                <span>Lorem ipsum dolor sit amet.</span>
+                            </div>
+                        </li>
+                    </ul>
+
+
+                    <script>
+                        $('.collapsible').collapsible();
+                    </script>
+
                     <hr>
                 </div>
                 <button class="waves-effect waves-light btn" id="submitButton" type="submit" value="submit">
