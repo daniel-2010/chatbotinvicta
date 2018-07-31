@@ -206,8 +206,8 @@
                             this.qtd_p = $('#product_' + id_product + "_qtd").val();
                             this.obs = $('#product_' + id_product + "_obs").val();
 
-                            resumo += '<div class=" col s8">' + this.nome_p + '</div><div class=" col s4">' + this.qtd_p + ' x ' + this.preco_p + '</div>';
-                            if(this.obs !=''){
+                            resumo += '<div class="col s8">' + this.nome_p + '</div><div class="col s4">' + this.qtd_p + ' x ' + this.preco_p + '</div>';
+                            if(this.obs){
                                 resumo += '<div class=" col s12">'+this.obs+'</div>';
                             }
                         }
