@@ -203,7 +203,7 @@
                             this.qtd_p = $('#product_' + id_product + "_qtd").val();
                             this.obs = $('#product_' + id_product + "_obs").val();
 
-                            this.total += ((+this.preco_p)*(+this.qtd_p));
+                            this.total += (parseFloat(this.preco_p)*parseInt(this.qtd_p));
 
                             resumo += '<div class="col s8 col-no-pad">' + this.nome_p + '</div><div class="col s4 col-no-pad">' + this.qtd_p + ' x ' + this.preco_p + '</div>';
                             if(this.obs){
