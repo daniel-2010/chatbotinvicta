@@ -225,7 +225,7 @@
                                 id_adicionais.forEach(function (x, chave) {
                                     resumo += '<div class="col s12 col-no-pad"><i>Adicionais</i></div>';
 
-                                    angular.forEach($scope.adicionais, function (value3, key) {
+                                    angular.forEach($scope.additionals, function (value3, key) {
                                         if (value3._id === x) {
                                             total += parseFloat(value3.preco_additional);
                                             resumo += '<div class="col s8 col-no-pad"><i>' + value3.additional + '</i></div><div class="col s4 col-no-pad">&nbsp &nbsp + R$' + numberParaReal(value3.preco_additional) + '</div>';
