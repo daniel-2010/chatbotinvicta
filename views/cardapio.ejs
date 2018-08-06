@@ -207,7 +207,7 @@
 
                             total += preco_p * qtd_p;
 
-                            resumo += '<div class="col s8 col-no-pad">' + nome_p + '</div><div class="col s4 col-no-pad">' + qtd_p + ' x R$' + preco_p.formatMoney(2, ',', '.') + '</div>';
+                            resumo += '<div class="col s8 col-no-pad">' + nome_p + '</div><div class="col s4 col-no-pad">' + qtd_p + ' x R$' + formatMoney(preco_p,2, ',', '.') + '</div>';
                             if (obs) {
                                 resumo += '<div class="col s12 col-no-pad">*Obs.:<i>' + obs + '</i></div>';
                             }
@@ -217,7 +217,7 @@
                                     if (value2._id === id_borda) {
                                         console.log(id_borda);
                                         total += parseFloat(value2.preco_border);
-                                        resumo += '<div class="col s8 col-no-pad"><i>Borda de </i>' + value2.nome_border + '</div><div class="col s4 col-no-pad">&nbsp&nbps +R$' + value2.preco_border.formatMoney(2, ',', '.') + '</div>';
+                                        resumo += '<div class="col s8 col-no-pad"><i>Borda de </i>' + value2.nome_border + '</div><div class="col s4 col-no-pad">&nbsp&nbps +R$' + formatMoney(value2.preco_border,2, ',', '.') + '</div>';
                                     }
                                 });
                             }
@@ -233,8 +233,8 @@
             }
             $('#result').html(resumo);
         }
-        prototype.formatMoney = function (c, d, t) {
-            var n = this,
+        function formatMoney (n,c, d, t) {
+            var n = n,
                 c = isNaN(c = Math.abs(c)) ? 2 : c,
                 d = d == undefined ? "." : d,
                 t = t == undefined ? "," : t,
