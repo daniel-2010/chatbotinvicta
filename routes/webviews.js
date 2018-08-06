@@ -7,6 +7,7 @@ const produtcModel = require("../models/product"); 1
 const additionalModel = require("../models/additional");
 const bordersModel = require("../models/borders");
 const salesModel = require("../models/sales");
+const itensModel = require("../models/itens");
 
 
 var router = express.Router();
@@ -51,7 +52,9 @@ router.get('/get_products/', function (req, res) {
 
 router.get('/save', function (req, res) {
   let body = req.query;
-  //let topics = body.topics.join(',');
+  let topics = body.topics.join(',');
+
+  let itens = body.products;
   let response = `Pedido enviado com sucesso. Em qual endereço podemos enviar seu pedido?`;
 
   let sale = new salesModel({
@@ -61,11 +64,24 @@ router.get('/save', function (req, res) {
   });
 
   sale.save().then(function (err, sale) {
-    if (err) {
-      console.log(err)
-    } else {
+    if (!err) {
+      itens.forEach(function (cod_item) {
+        produtcModel.findOne({ "_id": cod_item }, function (err, doc) {
+          new itensModel({
+            id_sale: sale._id,
+            nome_item: doc.nome_product,
+            tipo_item: doc.tipo_product,
+            preco_item: doc.preco_product,
+            qtd_item: body.global['product_'+doc._id+'_qtd'],
+            obs_item: body.global['product_'+doc._id+'_obs'],
+            borda_item: '',
+            adicionais_item: ''
+          }).save().then();
+          res.json(doc);
+        });
+      });
       console.log(sale._id);
-    }
+    } else { console.log(err) }
   });
 
   fbservice.sendTextMessage(body.psid, response);
