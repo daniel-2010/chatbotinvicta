@@ -134,7 +134,7 @@
         }(document, 'script', 'Messenger'));
 
         window.extAsyncInit = function () {
-            MessengerExtensions.getContext('285946188630983',
+            MessengerExtensions.getContext('1871130752977279',
                 function success(thread_context) {
                     $('#psid').val(thread_context.psid);
                     $.getJSON('/webview/settings?psid=' + thread_context.psid, function (data) {
@@ -219,9 +219,10 @@
                                     }
                                 });
                             }
-                            if (id_adicionais.length > 0) {
+                            if ((id_adicionais.length>1 && id_adicionais[0]==="")||(id_adicionais.length>0&&id_adicionais[0]!="")) {
 
                                 resumo += '<div class="col s12 col-no-pad"><b>Adicionais:</b></div>';
+
                                 id_adicionais.forEach(function (x, chave) {
                                     angular.forEach($scope.additionals, function (value3, key) {
                                         if (value3._id === x) {
