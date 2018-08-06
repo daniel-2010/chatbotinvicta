@@ -199,8 +199,8 @@
                     angular.forEach($scope.products, function (value, key) {
                         if (value._id === id_product) {
                             this.nome_p = value.nome_product;
-                            this.preco_p = parseFloat(value.preco_product);
-                            this.qtd_p = parseInt($('#product_' + id_product + "_qtd").val());
+                            this.preco_p = parseFloat(value.preco_product) || 0;
+                            this.qtd_p = parseInt($('#product_' + id_product + "_qtd").val())|| 0;
                             this.obs = $('#product_' + id_product + "_obs").val();
                             
 
