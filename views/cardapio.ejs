@@ -209,7 +209,7 @@
 
                             total += preco_p * qtd_p;
 
-                            resumo += '<div class="col s8 col-no-pad">' + nome_p + '</div><div class="col s4 col-no-pad">' + qtd_p + ' x R$' + numberParaReal(preco_p) + '</div>';
+                            resumo += '<div class="col s8 col-no-pad"><b>Pizza: </b>' + nome_p + '</div><div class="col s4 col-no-pad">' + qtd_p + ' x R$' + numberParaReal(preco_p) + '</div>';
 
                             if (id_borda) {
                                 angular.forEach($scope.borders, function (value2, key) {
@@ -223,28 +223,18 @@
 
                                 resumo += '<div class="col s12 col-no-pad"><b>Adicionais:</b></div>';
                                 id_adicionais.forEach(function (x, chave) {
-
-
                                     angular.forEach($scope.additionals, function (value3, key) {
                                         if (value3._id === x) {
                                             total += parseFloat(value3.preco_additional);
                                             resumo += '<div class="col s8 col-no-pad"><i>' + value3.nome_additional + '</i></div><div class="col s4 col-no-pad">&nbsp &nbsp + R$' + numberParaReal(value3.preco_additional) + '</div>';
                                         }
                                     });
-
-
                                 });
-
-
-
                             }
                             if (obs) {
                                 resumo += '<div class="col s12 col-no-pad"><b>*Obs.:</b><i>' + obs + '</i></div>';
                             }
-
-
                             resumo += '<div class=" col s12 col-no-pad"><hr></div>';
-
                         }
                     });
                 })
