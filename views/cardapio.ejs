@@ -189,7 +189,7 @@
             var obs = '';
             var total = 0;
             var id_borda = 0;
-            var id_adicionais = 0;
+            var id_adicionais = {};
 
 
             var $scope = angular.element('div[ng-controller="myCtrl"]').scope();
@@ -210,26 +210,33 @@
                             total += preco_p * qtd_p;
 
                             resumo += '<div class="col s8 col-no-pad">' + nome_p + '</div><div class="col s4 col-no-pad">' + qtd_p + ' x R$' + numberParaReal(preco_p) + '</div>';
-                            
+
                             if (id_borda) {
                                 angular.forEach($scope.borders, function (value2, key) {
                                     if (value2._id === id_borda) {
-                                        total += parseFloat(value2.preco_border)*qtd_p;
-                                        resumo += '<div class="col s8 col-no-pad"><i>Borda de </i>' + value2.nome_border + '</div><div class="col s4 col-no-pad">&nbsp &nbsp + R$' + numberParaReal(value2.preco_border*qtd_p) + '</div>';
+                                        total += parseFloat(value2.preco_border) * qtd_p;
+                                        resumo += '<div class="col s8 col-no-pad"><i>Borda de </i>' + value2.nome_border + '</div><div class="col s4 col-no-pad">&nbsp &nbsp + R$' + numberParaReal(value2.preco_border * qtd_p) + '</div>';
                                     }
                                 });
                             }
-                            if (id_adicionais) {
-                                console.log(id_adicionais);
-                                /*
-                                angular.forEach($scope.adicionais, function (value2, key) {
-                                    if (value2._id === id_borda) {
-                                        console.log(id_borda);
-                                        total += parseFloat(value2.preco_border)*qtd_p;
-                                        resumo += '<div class="col s8 col-no-pad"><i>Borda de </i>' + value2.nome_border + '</div><div class="col s4 col-no-pad">&nbsp &nbsp + R$' + numberParaReal(value2.preco_border*qtd_p) + '</div>';
-                                    }
+                            if (id_adicionais.length()>0) {
+
+
+                                id_adicionais.forEach(function (x, chave) {
+                                    resumo += '<div class="col s12 col-no-pad"><i>Adicionais</i></div>';
+
+                                    angular.forEach($scope.adicionais, function (value3, key) {
+                                        if (value3._id === x) {
+                                            total += parseFloat(value3.preco_additional);
+                                            resumo += '<div class="col s8 col-no-pad"><i>' + value3.additional + '</i></div><div class="col s4 col-no-pad">&nbsp &nbsp + R$' + numberParaReal(value3.preco_additional) + '</div>';
+                                        }
+                                    });
+                                    
+
                                 });
-                                */
+
+
+
                             }
                             if (obs) {
                                 resumo += '<div class="col s12 col-no-pad">*Obs.:<i>' + obs + '</i></div>';
