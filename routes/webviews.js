@@ -38,31 +38,34 @@ router.get('/get_products/', function (req, res) {
             if (!err) {
               json.borders = doc;
               res.json(json);
-            } else {console.log("Erro on find products: " + err); res.json([]);}    
+            } else { console.log("Erro on find products: " + err); res.json([]); }
           });
-        } else {console.log("Erro on find products: " + err); res.json([]);}    
+        } else { console.log("Erro on find products: " + err); res.json([]); }
       });
-    } else {console.log("Erro on find products: " + err); res.json([]);}    
+    } else { console.log("Erro on find products: " + err); res.json([]); }
   });
-  
-  
-  
+
+
+
 });
 
 router.get('/save', function (req, res) {
   let body = req.query;
-  let topics = body.topics.join(',');
+  //let topics = body.topics.join(',');
   let response = `Pedido enviado com sucesso. Em qual endereço podemos enviar seu pedido?`;
 
   let sale = new salesModel({
-		fb_id_user: body.psid,
-		endereco_sale: "",
-		valor_total_sale: 0
+    fb_id_user: body.psid,
+    endereco_sale: " ",
+    valor_total_sale: 0
   });
-  
-	sale.save(function(err, sale){
 
-
+  sale.save().then(function (err, sale) {
+    if (err) {
+      console.log(err)
+    } else {
+      console.log(sale._id);
+    }
   });
 
   fbservice.sendTextMessage(body.psid, response);
