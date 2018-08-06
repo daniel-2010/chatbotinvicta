@@ -53,9 +53,9 @@
                                                 <label>*Obs.</label>
                                             </div>
                                             <div class="input-field col s6">
-                                                <select multiple name="product_{{x._id}}_adicionais" onchange="calcular()">
+                                                <select multiple name="product_{{x._id}}_adicionais" onchange="calcular()" id="product_{{x._id}}_adicionais">
                                                     <option value="" selected>Sem adicionais</option>
-                                                    <option ng-repeat="x2 in additionals" value="{{x2._id}}">{{x2.nome_additional}} - R${{x2.preco_additional | currency:"R$"}}</option>
+                                                    <option ng-repeat="x2 in additionals" value="{{x2._id}}">{{x2.nome_additional}} - {{x2.preco_additional | currency:"R$"}}</option>
                                                 </select>
                                                 <label>Adicionais</label>
                                             </div>
@@ -188,7 +188,7 @@
             var id_product = '';
             var obs = '';
             var total= 0;
-            var borda= 0;
+            var id_borda = 0;
 
 
             var $scope = angular.element('div[ng-controller="myCtrl"]').scope();
