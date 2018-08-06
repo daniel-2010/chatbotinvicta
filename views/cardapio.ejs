@@ -207,7 +207,7 @@
 
                             total += preco_p * qtd_p;
 
-                            resumo += '<div class="col s8 col-no-pad">' + nome_p + '</div><div class="col s4 col-no-pad">' + qtd_p + ' x R$' + formatMoney(preco_p,2, ',', '.') + '</div>';
+                            resumo += '<div class="col s8 col-no-pad">' + nome_p + '</div><div class="col s4 col-no-pad">' + qtd_p + ' x R$' + numberParaReal(preco_p) + '</div>';
                             if (obs) {
                                 resumo += '<div class="col s12 col-no-pad">*Obs.:<i>' + obs + '</i></div>';
                             }
@@ -217,7 +217,7 @@
                                     if (value2._id === id_borda) {
                                         console.log(id_borda);
                                         total += parseFloat(value2.preco_border);
-                                        resumo += '<div class="col s8 col-no-pad"><i>Borda de </i>' + value2.nome_border + '</div><div class="col s4 col-no-pad">&nbsp&nbps +R$' + formatMoney(value2.preco_border,2, ',', '.') + '</div>';
+                                        resumo += '<div class="col s8 col-no-pad"><i>Borda de </i>' + value2.nome_border + '</div><div class="col s4 col-no-pad">&nbsp&nbps +R$' + numberParaReal(value2.preco_border) + '</div>';
                                     }
                                 });
                             }
@@ -229,19 +229,13 @@
                     });
                 })
                 resumo += '</div>'
-                    + '<h5>Total: R$' + formatMoney(total,2, ',', '.') + '</h5>';
+                    + '<h5>Total: R$' + numberParaReal(total, 2) + '</h5>';
             }
             $('#result').html(resumo);
         }
-        function formatMoney (n,c, d, t) {
-            var n = n,
-                c = isNaN(c = Math.abs(c)) ? 2 : c,
-                d = d == undefined ? "." : d,
-                t = t == undefined ? "," : t,
-                s = n < 0 ? "-" : "",
-                i = String(parseInt(n = Math.abs(Number(n) || 0).toFixed(c))),
-                j = (j = i.length) > 3 ? j % 3 : 0;
-            return 
+        function numberParaReal(numero) {
+            var formatado = "R$ " + numero.toFixed(2).replace(".", ",");
+            return formatado;
         }
     </script>
 </body>
