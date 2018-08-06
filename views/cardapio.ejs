@@ -184,7 +184,7 @@
             var resumo = '<b>Resumo:</b><hr>';
             var nome_p = '';
             var qtd_p = 0;
-            var preco_p;
+            var preco_p = 0;
             var id_product = '';
             var obs = '';
             var total= 0;
@@ -199,12 +199,14 @@
                     angular.forEach($scope.products, function (value, key) {
                         if (value._id === id_product) {
                             this.nome_p = value.nome_product;
-                            this.preco_p = value.preco_product;
-                            this.qtd_p = $('#product_' + id_product + "_qtd").val();
+                            this.preco_p = parseFloat(value.preco_product);
+                            this.qtd_p = parseInt($('#product_' + id_product + "_qtd").val());
                             this.obs = $('#product_' + id_product + "_obs").val();
                             
 
                             this.total += (this.preco_p*this.qtd_p).valueOf();
+                            console.log("Qtd = "+this.qtd_p);
+                            console.log("Preço = "+this.preco_p);
                             console.log("Total = "+this.total);
                             console.log("========");
 
