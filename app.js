@@ -183,6 +183,27 @@ app.get('/add_additionals/',function(req,res){
 			preco_product: '5.00'
 		});
 		additional.save().then(r => {res.send("Additional added successfully");});
+
+		additional = new AdditionalModel({
+			nome_additional: 'Gergelim',
+			tipo_product: 'Sabores Salgados',
+			preco_product: '5.00'
+		});
+		additional.save().then(r => {res.send("Additional added successfully");});
+
+		additional = new AdditionalModel({
+			nome_additional: 'Mista (Requeijão e Cheddar)',
+			tipo_product: 'Sabores Salgados',
+			preco_product: '5.00'
+		});
+		additional.save().then(r => {res.send("Additional added successfully");});
+		
+		additional = new AdditionalModel({
+			nome_additional: 'Requeijão',
+			tipo_product: 'Sabores Salgados',
+			preco_product: '5.00'
+		});
+		additional.save().then(r => {res.send("Additional added successfully");});
 	})
 	
 //###########################################
