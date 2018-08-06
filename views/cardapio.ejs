@@ -119,7 +119,7 @@
         app.controller('myCtrl', function ($scope, $http) {
             $http.get("webview/get_products")
                 .then(function (response) {
-                    console.dir(response.data);
+                    console.dir(response);
                     /*
                     $scope.products = response.data.products;
                     $scope.borders = response.data.borders;
