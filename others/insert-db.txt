@@ -1,0 +1,157 @@
+//###########################################
+ //Apenas para popular a collection products
+app.get('/add_products/',function(req,res){
+/*
+	let product = new ProductModel({
+		nome_product: 'MUSSARELA',
+		receita_product: '(molho,mussarela e tomate)',
+		tipo_product: 'Pizzas Salgadas',preco_product: '28.99'
+	});
+	product.save().then(r => {res.send("Product added successfully");});
+
+	product = new ProductModel({
+		nome_product: 'TRADICIONAL',
+		receita_product: '(molho, presunto, mussarela, milho, tomate e orégano)',
+		tipo_product: 'Pizzas Salgadas',preco_product: '28.99'
+	});
+	product.save().then(r => {res.send("Product added successfully");});
+
+	product = new ProductModel({
+		nome_product: 'CALABRESA',
+		receita_product: '(molho, presunto, mussarela, calabresa, tomate e orégano)',
+		tipo_product: 'Pizzas Salgadas',preco_product: '28.99'
+	});
+	product.save().then(r => {res.send("Product added successfully");});
+
+	product = new ProductModel({
+		nome_product: 'CALABRESA COM CATUPIRY',
+		receita_product: '(molho, calabresa, catupiry e cebola)',
+		tipo_product: 'Pizzas Salgadas',preco_product: '28.99'
+	});
+	product.save().then(r => {res.send("Product added successfully");});
+
+	product = new ProductModel({
+		nome_product: 'TOSCANA',
+		receita_product: '(molho, presunto, calabresa, palmito, mussarela, tomate e orégano)',
+		tipo_product: 'Pizzas Salgadas',preco_product: '28.99'
+	});
+	product.save().then(r => {res.send("Product added successfully");});
+	*/
+})
+
+app.get('/add_additionals/',function(req,res){
+		let additional = new AdditionalModel({
+			nome_additional: 'Ovo',
+			tipo_additional: 'Sabores Salgados',
+			preco_additional: '3.00'
+		});
+		additional.save().then(r => {res.send("Additional added successfully");});
+
+		additional = new AdditionalModel({
+			nome_additional: 'Bacon',
+			tipo_additional: 'Sabores Salgados',
+			preco_additional: '3.00'
+		});
+		additional.save().then(r => {res.send("Additional added successfully");});
+		
+		additional = new AdditionalModel({
+			nome_additional: 'Milho',
+			tipo_additional: 'Sabores Salgados',
+			preco_additional: '3.00'
+		});
+		additional.save().then(r => {res.send("Additional added successfully");});
+		
+		additional = new AdditionalModel({
+			nome_additional: 'Ervilha',
+			tipo_additional: 'Sabores Salgados',
+			preco_additional: '3.00'
+		});
+		additional.save().then(r => {res.send("Additional added successfully");});
+
+		additional = new AdditionalModel({
+			nome_additional: 'Batata Palha',
+			tipo_additional: 'Sabores Salgados',
+			preco_additional: '3.00'
+		});
+		additional.save().then(r => {res.send("Additional added successfully");});
+
+		additional = new AdditionalModel({
+			nome_additional: 'Palmito',
+			tipo_additional: 'Sabores Salgados',
+			preco_additional: '3.00'
+		});
+		additional.save().then(r => {res.send("Additional added successfully");});
+		
+		additional = new AdditionalModel({
+			nome_additional: 'Catupiry',
+			tipo_additional: 'Sabores Salgados',
+			preco_additional: '3.00'
+		});
+		additional.save().then(r => {res.send("Additional added successfully");});
+
+        additional = new AdditionalModel({
+			nome_additional: 'Cheddar',
+			tipo_additional: 'Sabores Salgados',
+			preco_additional: '3.00'
+		});
+		additional.save().then(r => {res.send("Additional added successfully");});
+
+        additional = new AdditionalModel({
+			nome_additional: 'Vinagrete',
+			tipo_additional: 'Sabores Salgados',
+			preco_additional: '3.00'
+		});
+		additional.save().then(r => {res.send("Additional added successfully");});
+	})
+	
+
+app.get('/add_borders/',function(req,res){
+		let border = new BordersModel({
+			nome_border: 'Calabresa',
+			tipo_border: 'Sabores Salgados',
+			preco_border: '5.00'
+		});
+		border.save().then(r => {res.send("Border added successfully");});
+
+		border = new BordersModel({
+			nome_border: 'Calabresa com Catupiry',
+			tipo_border: 'Sabores Salgados',
+			preco_border: '5.00'
+		});
+		border.save().then(r => {res.send("Border added successfully");});
+		
+		border = new BordersModel({
+			nome_border: 'Cheddar',
+			tipo_border: 'Sabores Salgados',
+			preco_border: '5.00'
+		});
+		border.save().then(r => {res.send("Border added successfully");});
+		
+		border = new BordersModel({
+			nome_border: 'Cream Cheese Philadelphia',
+			tipo_border: 'Sabores Salgados',
+			preco_border: '5.00'
+		});
+		border.save().then(r => {res.send("Border added successfully");});
+
+		border = new BordersModel({
+			nome_border: 'Gergelim',
+			tipo_border: 'Sabores Salgados',
+			preco_border: '5.00'
+		});
+		border.save().then(r => {res.send("Border added successfully");});
+
+		border = new BordersModel({
+			nome_border: 'Mista (Requeijão e Cheddar)',
+			tipo_border: 'Sabores Salgados',
+			preco_border: '5.00'
+		});
+		border.save().then(r => {res.send("Border added successfully");});
+		
+		border = new BordersModel({
+			nome_border: 'Requeijão',
+			tipo_border: 'Sabores Salgados',
+			preco_border: '5.00'
+		});
+		border.save().then(r => {res.send("Border added successfully");});
+	})
