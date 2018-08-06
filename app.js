@@ -14,6 +14,7 @@ const UserMongoose = require("./models/user");
 const Employment = require("./models/employment");
 const ProductModel = require("./models/product");
 const AdditionalModel = require("./models/additional");
+const BordersModel = require("./models/border");
 
 const userModule = require('./routes/users');
 
