@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const itensSchema = mongoose.Schema({
   id: { type: String },
-  id_sale: {type: ObjectId, required:true},
+  id_sale: {type: String, required:true},
   nome_item: { type: String, required: true },
   tipo_item: { type: String},
   preco_item: { type: Number},
