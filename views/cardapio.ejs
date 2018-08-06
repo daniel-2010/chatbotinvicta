@@ -84,7 +84,7 @@
                     <li>
                         <div class="collapsible-header">
                             <i class="material-icons">send</i>Finalizar Pedido</div>
-                        <div class="collapsible-body">
+                        <div class="collapsible-body  collapsible-body-cardapio">
                             <div>
                                 <div id="result"></div>
 
@@ -189,6 +189,7 @@
             var obs = '';
             var total = 0;
             var id_borda = 0;
+            var id_adicionais = 0;
 
 
             var $scope = angular.element('div[ng-controller="myCtrl"]').scope();
@@ -204,22 +205,34 @@
                             qtd_p = parseInt($('#product_' + id_product + "_qtd").val()) || 0;
                             obs = $('#product_' + id_product + "_obs").val();
                             id_borda = $('#product_' + id_product + "_borda").val();
+                            id_adicionais = $('#product_' + id_product + "_adicionais").val();
 
                             total += preco_p * qtd_p;
 
                             resumo += '<div class="col s8 col-no-pad">' + nome_p + '</div><div class="col s4 col-no-pad">' + qtd_p + ' x R$' + numberParaReal(preco_p) + '</div>';
-                            if (obs) {
-                                resumo += '<div class="col s12 col-no-pad">*Obs.:<i>' + obs + '</i></div>';
-                            }
+                            
                             if (id_borda) {
-                                console.log(id_borda);
                                 angular.forEach($scope.borders, function (value2, key) {
                                     if (value2._id === id_borda) {
-                                        console.log(id_borda);
-                                        total += parseFloat(value2.preco_border);
-                                        resumo += '<div class="col s8 col-no-pad"><i>Borda de </i>' + value2.nome_border + '</div><div class="col s4 col-no-pad">&nbsp &nbsp +R$' + numberParaReal(value2.preco_border) + '</div>';
+                                        total += parseFloat(value2.preco_border)*qtd_p;
+                                        resumo += '<div class="col s8 col-no-pad"><i>Borda de </i>' + value2.nome_border + '</div><div class="col s4 col-no-pad">&nbsp &nbsp + R$' + numberParaReal(value2.preco_border*qtd_p) + '</div>';
                                     }
                                 });
+                            }
+                            if (id_adicionais) {
+                                console.log(id_adicionais);
+                                /*
+                                angular.forEach($scope.adicionais, function (value2, key) {
+                                    if (value2._id === id_borda) {
+                                        console.log(id_borda);
+                                        total += parseFloat(value2.preco_border)*qtd_p;
+                                        resumo += '<div class="col s8 col-no-pad"><i>Borda de </i>' + value2.nome_border + '</div><div class="col s4 col-no-pad">&nbsp &nbsp + R$' + numberParaReal(value2.preco_border*qtd_p) + '</div>';
+                                    }
+                                });
+                                */
+                            }
+                            if (obs) {
+                                resumo += '<div class="col s12 col-no-pad">*Obs.:<i>' + obs + '</i></div>';
                             }
 
 
