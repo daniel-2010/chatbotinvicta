@@ -202,11 +202,11 @@
                             this.preco_p = value.preco_product;
                             this.qtd_p = $('#product_' + id_product + "_qtd").val();
                             this.obs = $('#product_' + id_product + "_obs").val();
-                            console.log("Qtd = "+this.qtd_p);
-                            console.log("Preço = "+this.preco_p);
-                            console.log("========");
+                            
 
                             this.total += (parseFloat(this.preco_p)*parseInt(this.qtd_p));
+                            console.log("Total = "+this.total);
+                            console.log("========");
 
                             resumo += '<div class="col s8 col-no-pad">' + this.nome_p + '</div><div class="col s4 col-no-pad">' + this.qtd_p + ' x ' + this.preco_p + '</div>';
                             if(this.obs){
