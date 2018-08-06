@@ -198,16 +198,16 @@
                     id_product = $(this).val();
                     angular.forEach($scope.products, function (value, key) {
                         if (value._id === id_product) {
-                            this.nome_p = value.nome_product;
-                            this.preco_p = parseFloat(value.preco_product) || 0;
-                            this.qtd_p = parseInt($('#product_' + id_product + "_qtd").val())|| 0;
-                            this.obs = $('#product_' + id_product + "_obs").val();
+                            nome_p = value.nome_product;
+                            preco_p = parseFloat(value.preco_product) || 0;
+                            qtd_p = parseInt($('#product_' + id_product + "_qtd").val())|| 0;
+                            obs = $('#product_' + id_product + "_obs").val();
                             
 
-                            this.total += (this.preco_p*this.qtd_p).valueOf();
-                            console.log("Qtd = "+this.qtd_p);
-                            console.log("Preço = "+this.preco_p);
-                            console.log("Total = "+this.total);
+                            total += preco_p*qtd_p;
+                            console.log("Qtd = "+qtd_p);
+                            console.log("Preço = "+preco_p);
+                            console.log("Total = "+total);
                             console.log("========");
 
                             resumo += '<div class="col s8 col-no-pad">' + this.nome_p + '</div><div class="col s4 col-no-pad">' + this.qtd_p + ' x ' + this.preco_p + '</div>';
