@@ -229,7 +229,7 @@
                     });
                 })
                 resumo += '</div>'
-                    + '<h5>Total: R$' + total.formatMoney(2, ',', '.') + '</h5>';
+                    + '<h5>Total: R$' + formatMoney(total,2, ',', '.') + '</h5>';
             }
             $('#result').html(resumo);
         }
