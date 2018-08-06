@@ -119,7 +119,7 @@
         app.controller('myCtrl', function ($scope, $http) {
             $http.get("webview/get_products")
                 .then(function (response) {
-                    $scope.products = response.data;
+                    $scope = response.data;
                 });
         });
     </script>
