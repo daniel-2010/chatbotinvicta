@@ -55,18 +55,14 @@
                                             <div class="input-field col s6">
                                                 <select multiple name="product_{{x._id}}_adicionais" onchange="calcular()">
                                                     <option value="" selected>Sem adicionais</option>
-                                                    <option value="OVO">OVO - R$4,50</option>
-                                                    <option value="BACON">BACON - R$4,50</option>
-                                                    <option value="PALMITO">PALMITO - R$4,50</option>
+                                                    <option ng-repeat="x2 in additionals" value="{{x2._id}}">{{x2.nome_additional}} - R${{x2.preco_additional}}</option>
                                                 </select>
                                                 <label>Adicionais</label>
                                             </div>
                                             <div class="input-field col s6" name="product_{{x._id}}_borda">
                                                 <select onchange="calcular()">
                                                     <option value="" selected>Sem borda</option>
-                                                    <option value="BACON-5.00">BACON - R$5,00</option>
-                                                    <option value="CALABRESA-5.00">CALABRESA - R$5,00</option>
-                                                    <option value="CHEDDAR-5.00">CHEDDAR - R$5,00</option>
+                                                    <option ng-repeat="x3 in borders" value="{{x3._id}}">{{x3.nome_border}} - R${{x3.preco_border}}</option>
                                                 </select>
                                                 <label>Bordas Recheadas</label>
                                             </div>
