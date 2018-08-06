@@ -61,7 +61,7 @@
                                             </div>
                                             <div class="input-field col s6" name="product_{{x._id}}_borda" id="product_{{x._id}}_borda">
                                                 <select onchange="calcular()">
-                                                    <option value="0" selected>Sem borda</option>
+                                                    <option value="" selected>Sem borda</option>
                                                     <option ng-repeat="x3 in borders" value="{{x3._id}}">{{x3.nome_border}} - {{x3.preco_border | currency:"R$"}}</option>
                                                 </select>
                                                 <label>Bordas Recheadas</label>
@@ -203,7 +203,7 @@
                             preco_p = parseFloat(value.preco_product) || 0;
                             qtd_p = parseInt($('#product_' + id_product + "_qtd").val())|| 0;
                             obs = $('#product_' + id_product + "_obs").val();
-                            id_borda = $('#product_' + id_product + "_borda").val()|| 0;
+                            id_borda = $('#product_' + id_product + "_borda").val();
 
                             total += preco_p*qtd_p;
                             
@@ -211,7 +211,7 @@
                             if(obs){
                                 resumo += '<div class="col s12 col-no-pad">*Obs.:<i>'+obs+'</i></div>';
                             }
-                            if(id_borda!=0){
+                            if(id_borda){
                                 console.log(id_borda);
                                 angular.forEach($scope.borders, function (value2, key) {
                                     if (value2._id === id_borda) {
