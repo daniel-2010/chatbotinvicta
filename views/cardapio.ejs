@@ -207,7 +207,7 @@
 
                             total += preco_p * qtd_p;
 
-                            resumo += '<div class="col s8 col-no-pad">' + nome_p + '</div><div class="col s4 col-no-pad">' + qtd_p + ' x R$' + preco_p + '</div>';
+                            resumo += '<div class="col s8 col-no-pad">' + nome_p + '</div><div class="col s4 col-no-pad">' + qtd_p + ' x R$' + preco_p.formatMoney(2,',','.')  + '</div>';
                             if (obs) {
                                 resumo += '<div class="col s12 col-no-pad">*Obs.:<i>' + obs + '</i></div>';
                             }
@@ -217,7 +217,7 @@
                                     if (value2._id === id_borda) {
                                         console.log(id_borda);
                                         total += parseFloat(value2.preco_border);
-                                        resumo += '<div class="col s8 col-no-pad"><i>Borda de </i>' + value2.nome_border + '</div><div class="col s4 col-no-pad">&nbsp&nbps +R$' + formatReal(value2.preco_border) + '</div>';
+                                        resumo += '<div class="col s8 col-no-pad"><i>Borda de </i>' + value2.nome_border + '</div><div class="col s4 col-no-pad">&nbsp&nbps +R$' + value2.preco_border.formatMoney(2,',','.')  + '</div>';
                                     }
                                 });
                             }
@@ -229,7 +229,7 @@
                     });
                 })
                 resumo += '</div>'
-                    + '<h5>Total: R$' + total + '</h5>';
+                    + '<h5>Total: R$' + total.formatMoney(2,',','.') + '</h5>';
             }
             $('#result').html(resumo);
         }
