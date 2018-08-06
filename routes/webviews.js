@@ -6,6 +6,7 @@ const UserMongoose = require("../models/user");
 const produtcModel = require("../models/product"); 1
 const additionalModel = require("../models/additional");
 const bordersModel = require("../models/borders");
+const salesModel = require("../models/sales");
 
 
 var router = express.Router();
@@ -51,18 +52,18 @@ router.get('/get_products/', function (req, res) {
 router.get('/save', function (req, res) {
   let body = req.query;
   let topics = body.topics.join(',');
-  let response = `Settings saved!`;
+  let response = `Pedido enviado com sucesso. Em qual endereço podemos enviar seu pedido?`;
 
-  UserMongoose.update({ fb_id: body.psid },
-    { $set: { newsletter: body.newsletter, topics: topics, deals: body.deals } },
-    function (err, count) {
-      if (err) {
-        console.log('===> Erro ao atualizar Newsletter: ' + err);
-      } else {
-        console.log('===> Newsletter  atualizado com sucesso! Conut:' + count);
-      }
-    });
+  let sale = new salesModel({
+		fb_id_user: body.psid,
+		endereco_sale: "",
+		valor_total_sale: 0
+  });
+  
+	sale.save(function(err, sale){
 
+
+  });
 
   fbservice.sendTextMessage(body.psid, response);
 });
