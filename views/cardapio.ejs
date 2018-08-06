@@ -212,8 +212,10 @@
                                 resumo += '<div class="col s12 col-no-pad">*Obs.:<i>'+obs+'</i></div>';
                             }
                             if(id_borda!=0){
+                                console.log(id_borda);
                                 angular.forEach($scope.borders, function (value2, key) {
                                     if (value2._id === id_borda) {
+                                        console.log(id_borda);
                                         resumo += '<div class="col s8 col-no-pad">Borda de ' + value2.nome_border + '</div><div class="col s4 col-no-pad"> +' + value2.preco_border + '</div>';
                                     }
                                 });
