@@ -55,14 +55,14 @@
                                             <div class="input-field col s6">
                                                 <select multiple name="product_{{x._id}}_adicionais" onchange="calcular()">
                                                     <option value="" selected>Sem adicionais</option>
-                                                    <option ng-repeat="x2 in additionals" value="{{x2._id}}">{{x2.nome_additional}} - R${{x2.preco_additional | currency:"BRL$"}}</option>
+                                                    <option ng-repeat="x2 in additionals" value="{{x2._id}}">{{x2.nome_additional}} - R${{x2.preco_additional | currency:"R$"}}</option>
                                                 </select>
                                                 <label>Adicionais</label>
                                             </div>
-                                            <div class="input-field col s6" name="product_{{x._id}}_borda">
+                                            <div class="input-field col s6" name="product_{{x._id}}_borda" id="product_{{x._id}}_borda">
                                                 <select onchange="calcular()">
-                                                    <option value="" selected>Sem borda</option>
-                                                    <option ng-repeat="x3 in borders" value="{{x3._id}}">{{x3.nome_border}} - R${{x3.preco_border | currency:"BRL$"}}</option>
+                                                    <option value="0" selected>Sem borda</option>
+                                                    <option ng-repeat="x3 in borders" value="{{x3._id}}">{{x3.nome_border}} - {{x3.preco_border | currency:"R$"}}</option>
                                                 </select>
                                                 <label>Bordas Recheadas</label>
                                             </div>
@@ -188,6 +188,7 @@
             var id_product = '';
             var obs = '';
             var total= 0;
+            var borda= 0;
 
 
             var $scope = angular.element('div[ng-controller="myCtrl"]').scope();
@@ -202,18 +203,23 @@
                             preco_p = parseFloat(value.preco_product) || 0;
                             qtd_p = parseInt($('#product_' + id_product + "_qtd").val())|| 0;
                             obs = $('#product_' + id_product + "_obs").val();
-                            
+                            id_borda = $('#product_' + id_product + "_borda").val()|| 0;
 
                             total += preco_p*qtd_p;
-                            console.log("Qtd = "+qtd_p);
-                            console.log("Preço = "+preco_p);
-                            console.log("Total = "+total);
-                            console.log("========");
-
+                            
                             resumo += '<div class="col s8 col-no-pad">' + nome_p + '</div><div class="col s4 col-no-pad">' + qtd_p + ' x ' + preco_p + '</div>';
                             if(obs){
                                 resumo += '<div class="col s12 col-no-pad">*Obs.:<i>'+obs+'</i></div>';
                             }
+                            if(borda!=0){
+                                angular.forEach($scope.borders, function (value, key) {
+                                    if (value._id === id_borda) {
+                                        resumo += '<div class="col s8 col-no-pad">Borda de ' + value.nome_border + '</div><div class="col s4 col-no-pad"> +' + value.preco_border + '</div>';
+                                    }
+                                });
+                            }
+
+
                             resumo += '<div class=" col s12 col-no-pad"><hr></div>';
                             
                         }
