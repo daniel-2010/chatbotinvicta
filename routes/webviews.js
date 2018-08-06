@@ -30,19 +30,22 @@ router.get('/get_products/', function (req, res) {
   produtcModel.find({ "status_product": "ativo" }, function (err, doc) {
     if (!err) {
       json.products = doc;
+      additionalModel.find({ "status_additional": "ativo" }, function (err, doc) {
+        if (!err) {
+          json.additionals = doc;
+          bordersModel.find({ "status_border": "ativo" }, function (err, doc) {
+            if (!err) {
+              json.borders = doc;
+              res.json(json);
+            } else {console.log("Erro on find products: " + err); res.json([]);}    
+          });
+        } else {console.log("Erro on find products: " + err); res.json([]);}    
+      });
     } else {console.log("Erro on find products: " + err); res.json([]);}    
   });
-  additionalModel.find({ "status_additional": "ativo" }, function (err, doc) {
-    if (!err) {
-      json.additionals = doc;
-    } else {console.log("Erro on find products: " + err); res.json([]);}    
-  });
-  bordersModel.find({ "status_border": "ativo" }, function (err, doc) {
-    if (!err) {
-      json.borders = doc;
-    } else {console.log("Erro on find products: " + err); res.json([]);}    
-  });
-  res.json(json);
+  
+  
+  
 });
 
 router.get('/save', function (req, res) {
