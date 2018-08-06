@@ -59,8 +59,8 @@
                                                 </select>
                                                 <label>Adicionais</label>
                                             </div>
-                                            <div class="input-field col s6" name="product_{{x._id}}_borda" id="product_{{x._id}}_borda">
-                                                <select onchange="calcular()">
+                                            <div class="input-field col s6" >
+                                                <select onchange="calcular()" name="product_{{x._id}}_borda" id="product_{{x._id}}_borda">
                                                     <option value="" selected>Sem borda</option>
                                                     <option ng-repeat="x3 in borders" value="{{x3._id}}">{{x3.nome_border}} - {{x3.preco_border | currency:"R$"}}</option>
                                                 </select>
