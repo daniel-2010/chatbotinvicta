@@ -13,6 +13,7 @@ const mongoose = require("mongoose");
 const UserMongoose = require("./models/user");
 const Employment = require("./models/employment");
 const ProductModel = require("./models/product");
+const AdditionalModel = require("./models/additional");
 
 const userModule = require('./routes/users');
 
@@ -153,6 +154,37 @@ app.get('/add_products/',function(req,res){
 	product.save().then(r => {res.send("Product added successfully");});
 	*/
 })
+
+app.get('/add_additionals/',function(req,res){
+		let additional = new AdditionalModel({
+			nome_additional: 'Calabresa',
+			tipo_product: 'Sabores Salgados',
+			preco_product: '5.00'
+		});
+		additional.save().then(r => {res.send("Additional added successfully");});
+
+		additional = new AdditionalModel({
+			nome_additional: 'Calabresa com Catupiry',
+			tipo_product: 'Sabores Salgados',
+			preco_product: '5.00'
+		});
+		additional.save().then(r => {res.send("Additional added successfully");});
+		
+		additional = new AdditionalModel({
+			nome_additional: 'Cheddar',
+			tipo_product: 'Sabores Salgados',
+			preco_product: '5.00'
+		});
+		additional.save().then(r => {res.send("Additional added successfully");});
+		
+		additional = new AdditionalModel({
+			nome_additional: 'Cream Cheese Philadelphia',
+			tipo_product: 'Sabores Salgados',
+			preco_product: '5.00'
+		});
+		additional.save().then(r => {res.send("Additional added successfully");});
+	})
+	
 //###########################################
 
 app.post('/webhook/', function (req, res) {
