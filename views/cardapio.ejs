@@ -204,7 +204,7 @@
                             this.obs = $('#product_' + id_product + "_obs").val();
                             
 
-                            this.total += (parseFloat(this.preco_p)*parseInt(this.qtd_p));
+                            this.total += (this.preco_p*this.qtd_p).valueOf();
                             console.log("Total = "+this.total);
                             console.log("========");
 
