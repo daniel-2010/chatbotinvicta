@@ -61,7 +61,7 @@ router.get('/save', function (req, res) {
     valor_total_sale: 0
   });
 
-  mSale.save().then(function (err, sale) {
+  mSale.save(function (err, sale) {
     console.log("1 Codigo Venda: " + sale);
     if (err) {
       console.log(err)
