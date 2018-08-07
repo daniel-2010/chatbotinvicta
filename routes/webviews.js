@@ -52,7 +52,6 @@ router.get('/save', function (req, res) {
   let body = req.query;
   let itens = body.products;
   let response = `Pedido enviado com sucesso. Em qual endereço podemos enviar seu pedido?`;
-  let borderBanco = {};
 
   let mSale = new salesModel({
     fb_id_user: body.psid,
@@ -76,15 +75,21 @@ router.get('/save', function (req, res) {
             preco_item: doc.preco_product,
             qtd_item: body['product_' + doc._id + '_qtd'],
             obs_item: body['product_' + doc._id + '_obs']
-            //borda_item: { 'nome_border': borderBanco.nome_border, 'preco_border': borderBanco.preco_border },
-            //adicionais_item: ''
           });
-          
+
           if (body['product_' + doc._id + '_borda'].length > 0) {
             bordersModel.findOne({ "_id": body['product_' + doc._id + '_borda'] }).exec()
               .then(function (doc1) {
-                mitem.borda_item = { 'nome_border': doc1.nome_border, 'preco_border': doc1.preco_border };
-                mitem.save().then();
+                if (body['product_' + doc._id + '_borda'].length > 0) {
+                  additionalModel.find({ "_id": { $in: body['product_' + doc._id + '_adicionais'] } }, function (err, doc2) {
+                    mitem.adicionais_item = doc2;
+                    mitem.borda_item = doc1;
+                    mitem.save().then();
+                  });
+                } else {
+                  mitem.borda_item = doc1;
+                  mitem.save().then();
+                }
               })
           } else {
             mitem.save().then();
