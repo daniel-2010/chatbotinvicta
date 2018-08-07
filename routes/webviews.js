@@ -62,11 +62,11 @@ router.get('/save', function (req, res) {
   });
 
   mSale.save(function (err, sale) {
-    console.log("1 Codigo Venda: " + sale);
+    
     if (err) {
       console.log(err)
     } else {
-      console.log("2 Codigo Venda: " + sale._id);
+      
       itens.forEach(function (cod_item) {
 
         produtcModel.findOne({ "_id": cod_item }, function (err, doc) {
@@ -80,7 +80,7 @@ router.get('/save', function (req, res) {
             })
           }
 
-          console.log("####>>> 2 Nome borda: "+borderBanco.nome_border);
+          console.log("####>>> 2 Nome borda: "+this.borderBanco.nome_border);
 
           let mitem = new itensModel({
             id_sale: sale._id,
@@ -89,7 +89,7 @@ router.get('/save', function (req, res) {
             preco_item: doc.preco_product,
             qtd_item: body['product_' + doc._id + '_qtd'],
             obs_item: body['product_' + doc._id + '_obs'],
-            borda_item: {'nome_border':borderBanco.nome_border,'preco_border':borderBanco.preco_border},
+            borda_item: {'nome_border':this.borderBanco.nome_border,'preco_border':this.borderBanco.preco_border},
             adicionais_item: ''
           });
           mitem.save().then();
