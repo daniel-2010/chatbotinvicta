@@ -64,6 +64,7 @@ router.get('/save', function (req, res) {
   sale.save().then(function (err, sale) {
     if (!err) {
       itens.forEach(function (cod_item) {
+        console.log("Codigo item: "+cod_item);
         produtcModel.findOne({ "_id": cod_item }, function (err, doc) {
           let mitem = new itensModel({
             id_sale: sale._id,
@@ -75,7 +76,11 @@ router.get('/save', function (req, res) {
             borda_item: '',
             adicionais_item: ''
           });
-          mitem.save().then();
+          mitem.save().then(function(err,r){
+            if(err){
+              console.log(err);
+            }
+          });
         });
       });
       console.log(sale._id);
