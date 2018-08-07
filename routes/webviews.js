@@ -68,8 +68,6 @@ router.get('/save', function (req, res) {
     } else {
       console.log("2 Codigo Venda: " + sale._id);
       itens.forEach(function (cod_item) {
-        
-        
 
         produtcModel.findOne({ "_id": cod_item }, function (err, doc) {
           let borderBanco = new bordersModel();
