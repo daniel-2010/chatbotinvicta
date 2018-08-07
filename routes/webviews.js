@@ -71,7 +71,11 @@ router.get('/save', function (req, res) {
         produtcModel.findOne({ "_id": cod_item }, function (err, doc) {
 
           if (body['product_' + doc._id + '_borda'].length > 0) {
-            borderBanco = get_border_by_id(body['product_' + doc._id + '_borda']);
+            get_border_by_id(body['product_' + doc._id + '_borda'], function(err, border) {
+              if (err) {console.log(err);}
+              borderBanco = border;
+            });
+
             console.log("####>>> 1 Nome borda: " + borderBanco.nome_border);
             borda_item = { 'nome_border': borderBanco.nome_border, 'preco_border': borderBanco.preco_border };
           }
@@ -110,11 +114,15 @@ router.get('/settings', function (req, res) {
   });
 });
 
-
-function get_border_by_id(id) {
-  var result = bordersModel.findOne({ "_id": id }).exec();
-  return result;
-}
+function get_border_by_id(id, callback) {
+  bordersModel.find({ "_id": id}, function(err, borders) {
+    if (err) {
+      callback(err, null);
+    } else {
+      callback(null, borders[0]);
+    }
+  });
+};
 
 module.exports = router;
 
