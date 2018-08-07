@@ -72,7 +72,7 @@ router.get('/save', function (req, res) {
         produtcModel.findOne({ "_id": cod_item }, function (err, doc) {
           
           if (body['product_' + doc._id + '_borda'].length > 0) {
-            bordersModel.findOne({ "_id": body['product_' + doc._id + '_borda']}).exec()
+            bordersModel.find({ "_id": body['product_' + doc._id + '_borda']}).exec()
             .then(function (doc1) {
               borderBanco = doc1;
               console.log("####>>> 1 Nome borda: "+borderBanco.nome_border);
