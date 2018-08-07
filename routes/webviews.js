@@ -74,7 +74,7 @@ router.get('/save', function (req, res) {
         produtcModel.findOne({ "_id": cod_item }, function (err, doc) {
 
           //console.log("####>> Global: " + body.global['product_' + doc._id + '_qtd']);
-          console.log("####>> This: " + body.this['product_' + doc._id + '_qtd']);
+          console.log("####>> This: " + body['product_' + doc._id + '_qtd']);
 
           let mitem = new itensModel({
             id_sale: sale._id,
