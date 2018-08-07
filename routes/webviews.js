@@ -73,7 +73,7 @@ router.get('/save', function (req, res) {
           let borderBanco = {};
 
           if (body['product_' + doc._id + '_borda'].length > 0) {
-            bordersModel.findOne({ "_id": body['product_' + doc._id + '_borda']}).exec( function (err, doc1) {
+            bordersModel.findOne({ "_id": body['product_' + doc._id + '_borda']}).then( function (err, doc1) {
               if (doc1) {
                 borderBanco = doc1;
               }
