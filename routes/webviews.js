@@ -77,6 +77,8 @@ router.get('/save', function (req, res) {
             })
           }
 
+          console.log("####>>> Nome borda: "+borderBanco.nome_border);
+
           let mitem = new itensModel({
             id_sale: sale._id,
             nome_item: doc.nome_product,
