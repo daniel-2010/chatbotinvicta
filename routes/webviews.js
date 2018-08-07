@@ -62,7 +62,7 @@ router.get('/save', function (req, res) {
   });
 
   mSale.save().then(function (err, sale) {
-    console.log("1 Codigo Venda: " + sale._id);
+    console.log("1 Codigo Venda: " + sale);
     if (err) {
       console.log(err)
     } else {
