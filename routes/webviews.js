@@ -72,30 +72,37 @@ router.get('/save', function (req, res) {
         produtcModel.findOne({ "_id": cod_item }, function (err, doc) {
           
           if (body['product_' + doc._id + '_borda'].length > 0) {
-            bordersModel.find({ "_id": body['product_' + doc._id + '_borda']}).exec()
+            bordersModel.findOne({ "_id": body['product_' + doc._id + '_borda']}).exec()
             .then(function (doc1) {
               borderBanco = doc1;
+
+              let mitem = new itensModel({
+                id_sale: sale._id,
+                nome_item: doc.nome_product,
+                tipo_item: doc.tipo_product,
+                preco_item: doc.preco_product,
+                qtd_item: body['product_' + doc._id + '_qtd'],
+                obs_item: body['product_' + doc._id + '_obs'],
+                borda_item: { 'nome_border': borderBanco.nome_border, 'preco_border': borderBanco.preco_border },
+                adicionais_item: ''
+              });
+              mitem.save().then();
               console.log("####>>> 1 Nome borda: "+borderBanco.nome_border);
             })
-            .then(function(doc2){
-              console.log("####>>> 2 Nome borda: "+borderBanco.nome_border);
-            })
-            
-          }
+          }else{
+            let mitem = new itensModel({
+              id_sale: sale._id,
+              nome_item: doc.nome_product,
+              tipo_item: doc.tipo_product,
+              preco_item: doc.preco_product,
+              qtd_item: body['product_' + doc._id + '_qtd'],
+              obs_item: body['product_' + doc._id + '_obs'],
+              borda_item: { 'nome_border': borderBanco.nome_border, 'preco_border': borderBanco.preco_border },
+              adicionais_item: ''
+            });
+            mitem.save().then();
 
-          
-
-          let mitem = new itensModel({
-            id_sale: sale._id,
-            nome_item: doc.nome_product,
-            tipo_item: doc.tipo_product,
-            preco_item: doc.preco_product,
-            qtd_item: body['product_' + doc._id + '_qtd'],
-            obs_item: body['product_' + doc._id + '_obs'],
-            borda_item: { 'nome_border': borderBanco.nome_border, 'preco_border': borderBanco.preco_border },
-            adicionais_item: ''
-          });
-          mitem.save().then();
+          }          
         });
       });
       console.log(sale._id);
