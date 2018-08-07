@@ -52,8 +52,6 @@ router.get('/get_products/', function (req, res) {
 
 router.get('/save', function (req, res) {
   let body = req.query;
-  let topics = body.topics.join(',');
-
   let itens = body.products;
   let response = `Pedido enviado com sucesso. Em qual endereço podemos enviar seu pedido?`;
 
