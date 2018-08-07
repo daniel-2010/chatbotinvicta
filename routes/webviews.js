@@ -55,13 +55,13 @@ router.get('/save', function (req, res) {
   let itens = body.products;
   let response = `Pedido enviado com sucesso. Em qual endereço podemos enviar seu pedido?`;
 
-  let sale = new salesModel({
+  let mSale = new salesModel({
     fb_id_user: body.psid,
     endereco_sale: " ",
     valor_total_sale: 0
   });
 
-  sale.save().then(function (err, sale) {
+  mSale.save().then(function (err, sale) {
     console.log("1 Codigo Venda: " + sale._id);
     if (err) {
       console.log(err)
