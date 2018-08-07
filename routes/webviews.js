@@ -75,8 +75,8 @@ router.get('/save', function (req, res) {
             nome_item: doc.nome_product,
             tipo_item: doc.tipo_product,
             preco_item: doc.preco_product,
-            qtd_item: body.global['product_' + doc._id + '_qtd'],
-            obs_item: body.global['product_' + doc._id + '_obs'],
+            //qtd_item: body.global['product_' + doc._id + '_qtd'],
+            //obs_item: body.global['product_' + doc._id + '_obs'],
             borda_item: '',
             adicionais_item: ''
           });
