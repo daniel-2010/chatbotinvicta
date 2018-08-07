@@ -71,16 +71,16 @@ router.get('/save', function (req, res) {
 
         produtcModel.findOne({ "_id": cod_item }, function (err, doc) {
           
-
           if (body['product_' + doc._id + '_borda'].length > 0) {
-            bordersModel.findOne({ "_id": body['product_' + doc._id + '_borda']}).exec( function (err, doc1) {
-              if (doc1) {
-                borderBanco = doc1;
-                borderBanco.save();
-              }
+            bordersModel.findOne({ "_id": body['product_' + doc._id + '_borda']}).exec()
+            .then(function (err, doc1) {
+              borderBanco = doc1;
               console.log("####>>> 1 Nome borda: "+borderBanco.nome_border);
             })
-            console.log("####>>> 2 Nome borda: "+borderBanco.nome_border);
+            .then(function(err, doc2){
+              console.log("####>>> 2 Nome borda: "+borderBanco.nome_border);
+            })
+            
           }
 
           
