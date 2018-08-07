@@ -65,7 +65,7 @@ router.get('/save', function (req, res) {
     if (!err) {
       itens.forEach(function (cod_item) {
         produtcModel.findOne({ "_id": cod_item }, function (err, doc) {
-          new itensModel({
+          let mitem = new itensModel({
             id_sale: sale._id,
             nome_item: doc.nome_product,
             tipo_item: doc.tipo_product,
@@ -74,8 +74,8 @@ router.get('/save', function (req, res) {
             obs_item: body.global['product_'+doc._id+'_obs'],
             borda_item: '',
             adicionais_item: ''
-          }).save().then();
-          res.json(doc);
+          });
+          mitem.save().then();
         });
       });
       console.log(sale._id);
