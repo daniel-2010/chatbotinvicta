@@ -53,7 +53,6 @@ router.get('/save', function (req, res) {
   let itens = body.products;
   let response = `Pedido enviado com sucesso. Em qual endereço podemos enviar seu pedido?`;
   let borderBanco = {};
-  let borda_item = {};
 
   let mSale = new salesModel({
     fb_id_user: body.psid,
@@ -70,29 +69,27 @@ router.get('/save', function (req, res) {
 
         produtcModel.findOne({ "_id": cod_item }, function (err, doc) {
 
-          if (body['product_' + doc._id + '_borda'].length > 0) {
-            get_border_by_id(body['product_' + doc._id + '_borda'], function(err, border) {
-              if (err) {console.log(err);}
-              this.borderBanco = border;
-              console.log("####>>> 1 Nome borda: " + this.borderBanco.nome_border);
-            });
-
-            console.log("####>>> 2 Nome borda: " + this.borderBanco.nome_border);
-            borda_item = { 'nome_border': this.borderBanco.nome_border, 'preco_border': borderBanco.preco_border };
-          }
-
           let mitem = new itensModel({
             id_sale: sale._id,
             nome_item: doc.nome_product,
             tipo_item: doc.tipo_product,
             preco_item: doc.preco_product,
             qtd_item: body['product_' + doc._id + '_qtd'],
-            obs_item: body['product_' + doc._id + '_obs'],
-            borda_item: borda_item,
-            adicionais_item: ''
+            obs_item: body['product_' + doc._id + '_obs']
+            //borda_item: { 'nome_border': borderBanco.nome_border, 'preco_border': borderBanco.preco_border },
+            //adicionais_item: ''
           });
-          mitem.save().then();
+          
+          if (body['product_' + doc._id + '_borda'].length > 0) {
+            bordersModel.findOne({ "_id": body['product_' + doc._id + '_borda'] }).exec()
+              .then(function (doc1) {
+                mitem.borda_item = { 'nome_border': doc1.nome_border, 'preco_border': doc1.preco_border };
+                mitem.save().then();
+              })
+          } else {
+            mitem.save().then();
 
+          }
         });
       });
       console.log(sale._id);
@@ -115,15 +112,13 @@ router.get('/settings', function (req, res) {
   });
 });
 
-function get_border_by_id(id, callback) {
-  bordersModel.find({ "_id": id}, function(err, borders) {
-    if (err) {
-      callback(err, null);
-    } else {
-      callback(null, borders[0]);
-    }
-  });
-};
+
+function get_border_by_id(id) {
+  bordersModel.findOne({ "_id": id }).exec()
+    .then(function (doc1) {
+      return doc1;
+    });
+}
 
 module.exports = router;
 
