@@ -46,8 +46,6 @@ router.get('/get_products/', function (req, res) {
     } else { console.log("Erro on find products: " + err); res.json([]); }
   });
 
-
-
 });
 
 router.get('/save', function (req, res) {
@@ -55,6 +53,7 @@ router.get('/save', function (req, res) {
   let itens = body.products;
   let response = `Pedido enviado com sucesso. Em qual endereço podemos enviar seu pedido?`;
   let borderBanco = {};
+  let borda_item = {};
 
   let mSale = new salesModel({
     fb_id_user: body.psid,
@@ -70,39 +69,25 @@ router.get('/save', function (req, res) {
       itens.forEach(function (cod_item) {
 
         produtcModel.findOne({ "_id": cod_item }, function (err, doc) {
-          
+
           if (body['product_' + doc._id + '_borda'].length > 0) {
-            bordersModel.findOne({ "_id": body['product_' + doc._id + '_borda']}).exec()
-            .then(function (doc1) {
-              borderBanco = doc1;
+            borderBanco = get_border_by_id(body['product_' + doc._id + '_borda']);
+            console.log("####>>> 1 Nome borda: " + borderBanco.nome_border);
+            borda_item = { 'nome_border': borderBanco.nome_border, 'preco_border': borderBanco.preco_border };
+          }
 
-              let mitem = new itensModel({
-                id_sale: sale._id,
-                nome_item: doc.nome_product,
-                tipo_item: doc.tipo_product,
-                preco_item: doc.preco_product,
-                qtd_item: body['product_' + doc._id + '_qtd'],
-                obs_item: body['product_' + doc._id + '_obs'],
-                borda_item: { 'nome_border': borderBanco.nome_border, 'preco_border': borderBanco.preco_border },
-                adicionais_item: ''
-              });
-              mitem.save().then();
-              console.log("####>>> 1 Nome borda: "+borderBanco.nome_border);
-            })
-          }else{
-            let mitem = new itensModel({
-              id_sale: sale._id,
-              nome_item: doc.nome_product,
-              tipo_item: doc.tipo_product,
-              preco_item: doc.preco_product,
-              qtd_item: body['product_' + doc._id + '_qtd'],
-              obs_item: body['product_' + doc._id + '_obs'],
-              borda_item: { 'nome_border': borderBanco.nome_border, 'preco_border': borderBanco.preco_border },
-              adicionais_item: ''
-            });
-            mitem.save().then();
+          let mitem = new itensModel({
+            id_sale: sale._id,
+            nome_item: doc.nome_product,
+            tipo_item: doc.tipo_product,
+            preco_item: doc.preco_product,
+            qtd_item: body['product_' + doc._id + '_qtd'],
+            obs_item: body['product_' + doc._id + '_obs'],
+            borda_item: borda_item,
+            adicionais_item: ''
+          });
+          mitem.save().then();
 
-          }          
         });
       });
       console.log(sale._id);
@@ -124,6 +109,14 @@ router.get('/settings', function (req, res) {
     }
   });
 });
+
+
+function get_border_by_id(id) {
+  bordersModel.findOne({ "_id": id }).exec()
+    .then(function (doc1) {
+      return doc1;
+    });
+}
 
 module.exports = router;
 
