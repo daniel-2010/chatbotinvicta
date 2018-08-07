@@ -72,8 +72,12 @@ router.get('/save', function (req, res) {
         
 
         produtcModel.findOne({ "_id": cod_item }, function (err, doc) {
-
-          //console.log("####>> Global: " + body['product_' + doc._id + '_qtd']);
+          let borderBanco = {};
+          if(body['product_' + doc._id + '_borda'].length>0){
+            bordersModel.findOne({ "_id": body['product_' + doc._id + '_borda'] }, function (err, doc1) {
+              borderBanco = doc1;
+            })
+          }
 
           let mitem = new itensModel({
             id_sale: sale._id,
@@ -82,7 +86,7 @@ router.get('/save', function (req, res) {
             preco_item: doc.preco_product,
             qtd_item: body['product_' + doc._id + '_qtd'],
             obs_item: body['product_' + doc._id + '_obs'],
-            borda_item: '',
+            borda_item: borderBanco,
             adicionais_item: ''
           });
           mitem.save().then();
