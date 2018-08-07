@@ -74,9 +74,10 @@ router.get('/save', function (req, res) {
             get_border_by_id(body['product_' + doc._id + '_borda'], function(err, border) {
               if (err) {console.log(err);}
               borderBanco = border;
+              console.log("####>>> 1 Nome borda: " + borderBanco.nome_border);
             });
 
-            console.log("####>>> 1 Nome borda: " + borderBanco.nome_border);
+            console.log("####>>> 2 Nome borda: " + borderBanco.nome_border);
             borda_item = { 'nome_border': borderBanco.nome_border, 'preco_border': borderBanco.preco_border };
           }
 
