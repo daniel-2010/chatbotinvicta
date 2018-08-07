@@ -73,7 +73,7 @@ router.get('/save', function (req, res) {
           if (body['product_' + doc._id + '_borda'].length > 0) {
             get_border_by_id(body['product_' + doc._id + '_borda'], function(err, border) {
               if (err) {console.log(err);}
-              borderBanco = border;
+              this.borderBanco = border;
               console.log("####>>> 1 Nome borda: " + borderBanco.nome_border);
             });
 
