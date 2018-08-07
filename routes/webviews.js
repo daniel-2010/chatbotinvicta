@@ -68,14 +68,20 @@ router.get('/save', function (req, res) {
     } else {
       console.log("2 Codigo Venda: " + sale._id);
       itens.forEach(function (cod_item) {
-        console.log("3 Codigo item: " + cod_item);
+        
+        
+
         produtcModel.findOne({ "_id": cod_item }, function (err, doc) {
+
+          console.log("####>> Global: " + body.global['product_' + doc._id + '_qtd']);
+          console.log("####>> This: " + body.this['product_' + doc._id + '_qtd']);
+
           let mitem = new itensModel({
             id_sale: sale._id,
             nome_item: doc.nome_product,
             tipo_item: doc.tipo_product,
             preco_item: doc.preco_product,
-            //qtd_item: body.global['product_' + doc._id + '_qtd'],
+            qtd_item: body.this['product_' + doc._id + '_qtd'],
             //obs_item: body.global['product_' + doc._id + '_obs'],
             borda_item: '',
             adicionais_item: ''
