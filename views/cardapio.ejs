@@ -86,11 +86,11 @@
                             <div>
                                 <div id="result"></div>
                             </div>
-                            <button class="waves-effect waves-light btn" id="submitButton" type="submit" value="submit" onclick="return confirm('Deseja realmente enviar seu pedido?');">
+                            <button class="waves-effect waves-light btn" id="submitButton" type="submit">
                                 Enviar pedido
                                 <i class="material-icons right">send</i>
                             </button>
-                            <button class="red darken-3 btn" id="submitButton" type="button" value="submit" onclick="return confirm('Deseja realmente cancelar seu pedido?');">
+                            <button class="red darken-3 btn" id="submitButton" type="button">
                                 Cancelar pedido
                                 <i class="material-icons right">close</i>
                             </button>
@@ -142,12 +142,15 @@
                     // error
                 }
             );
-            $('#submitButton,#closeButton').click(function () {
-                MessengerExtensions.requestCloseBrowser(function success() {
-                    // webview closed
-                }, function error(err) {
-                    // an error occurred
-                });
+            $('#submitButton').click(function () {
+                if (confirm('Deseja realmente enviar seu pedido?')) {
+                    MessengerExtensions.requestCloseBrowser(function success() { }, function error(err) { });
+                }
+            });
+            $('#closeButton').click(function () {
+                if (confirm('Deseja cancelar enviar seu pedido?')) {
+                    MessengerExtensions.requestCloseBrowser(function success() { }, function error(err) { });
+                }
             });
 
 
@@ -208,7 +211,7 @@
                                     }
                                 });
                             }
-                            if ((id_adicionais.length>1 && id_adicionais[0]==="")||(id_adicionais.length>0&&id_adicionais[0]!="")) {
+                            if ((id_adicionais.length > 1 && id_adicionais[0] === "") || (id_adicionais.length > 0 && id_adicionais[0] != "")) {
                                 resumo += '<div class="col s12 col-no-pad"><b>Adicionais:</b></div>';
                                 id_adicionais.forEach(function (x, chave) {
                                     angular.forEach($scope.additionals, function (value3, key) {
@@ -238,4 +241,5 @@
         }
     </script>
 </body>
+
 </html>
