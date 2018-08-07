@@ -4,7 +4,7 @@ const bordersModel = require("../models/borders");
 
 const itensSchema = mongoose.Schema({
   id: { type: String },
-  id_sale: {type: new mongoose.Types.ObjectId, required:true},
+  id_sale: {type: Object, required:true},
   nome_item: { type: String, required: true },
   tipo_item: { type: String},
   preco_item: { type: Number},
