@@ -54,13 +54,13 @@ router.get('/save', function (req, res) {
   let body = req.query;
   let itens = body.products;
   let response = `Pedido enviado com sucesso. Em qual endereço podemos enviar seu pedido?`;
+  let borderBanco = {};
 
   let mSale = new salesModel({
     fb_id_user: body.psid,
     endereco_sale: " ",
     valor_total_sale: 0
   });
-
   mSale.save(function (err, sale) {
 
     if (err) {
@@ -70,15 +70,15 @@ router.get('/save', function (req, res) {
       itens.forEach(function (cod_item) {
 
         produtcModel.findOne({ "_id": cod_item }, function (err, doc) {
-          let borderBanco = {};
+          
 
           if (body['product_' + doc._id + '_borda'].length > 0) {
             bordersModel.findOne({ "_id": body['product_' + doc._id + '_borda']}).exec( function (err, doc1) {
               if (doc1) {
                 borderBanco = doc1;
+                borderBanco.save();
               }
               console.log("####>>> 1 Nome borda: "+borderBanco.nome_border);
-              next();
             })
             console.log("####>>> 2 Nome borda: "+borderBanco.nome_border);
           }
