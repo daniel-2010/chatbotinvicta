@@ -77,12 +77,12 @@ router.get('/save', function (req, res) {
               if (doc1) {
                 borderBanco.push(doc1);
               }
-              //console.log("####>>> 1 Nome borda: "+borderBanco.nome_border);
+              console.log("####>>> 1 Nome borda: "+borderBanco.nome_border);
               //console.log("####>>> 1 Nome borda Doc: "+doc1.nome_border);
             })
           }
 
-          //console.log("####>>> 2 Nome borda: "+borderBanco.nome_border);
+          console.log("####>>> 2 Nome borda: "+borderBanco.nome_border);
 
           let mitem = new itensModel({
             id_sale: sale._id,
