@@ -144,7 +144,8 @@
             );
             $('#submitButton').click(function () {
                 var r = confirm('Deseja realmente enviar seu pedido?')
-                if (r == true) {
+                alert(r);
+                if (r === true) {
                     document.forms[0].submit();
                     MessengerExtensions.requestCloseBrowser(function success() { }, function error(err) { });
                 } 
