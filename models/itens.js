@@ -8,7 +8,7 @@ const itensSchema = mongoose.Schema({
   preco_item: { type: Number},
   qtd_item: { type: Number},
   obs_item: { type: String},
-  borda_item: { type: String},
+  borda_item: { type: Object},
   adicionais_item: { type: String},
 });
 
