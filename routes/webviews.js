@@ -70,12 +70,12 @@ router.get('/save', function (req, res) {
       itens.forEach(function (cod_item) {
 
         produtcModel.findOne({ "_id": cod_item }, function (err, doc) {
-          let borderBanco = [];
+          let borderBanco = {};
 
           if (body['product_' + doc._id + '_borda'].length > 0) {
             bordersModel.findOne({ "_id": body['product_' + doc._id + '_borda'] }, function (err, doc1) {
               if (doc1) {
-                borderBanco.push(doc1);
+                borderBanco = doc1;
               }
               console.log("####>>> 1 Nome borda: "+borderBanco.nome_border);
               //console.log("####>>> 1 Nome borda Doc: "+doc1.nome_border);
