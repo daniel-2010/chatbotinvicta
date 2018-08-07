@@ -21,9 +21,9 @@
         <div ng-app="myApp" ng-controller="myCtrl">
             <form action="/webview/save" method="get">
                 <input type="hidden" name="psid" id="psid">
+                <input type="hidden" name="total_pedido" id="total_pedido">
                 <ul class="collapsible">
                     <li class="active">
-
                         <div class="collapsible-header">
                             <i class="material-icons">receipt</i>Cardápio</div>
                         <div class="collapsible-body collapsible-body-cardapio">
@@ -69,7 +69,6 @@
 
                                         </div>
                                     </div>
-
                                 </div>
                                 <script>
                                     setTimeout(function () {
@@ -77,7 +76,6 @@
                                     }, 1000);
 
                                 </script>
-
                             </div>
                         </div>
                     </li>
@@ -87,28 +85,23 @@
                         <div class="collapsible-body  collapsible-body-result">
                             <div>
                                 <div id="result"></div>
-
                             </div>
-                            <button class="waves-effect waves-light btn" id="submitButton" type="submit" value="submit">
+                            <button class="waves-effect waves-light btn" id="submitButton" type="submit" value="submit" onclick="return confirm('Deseja realmente enviar seu pedido?');">
                                 Enviar pedido
                                 <i class="material-icons right">send</i>
                             </button>
+                            <button class="red darken-3 btn" id="submitButton" type="button" value="submit" onclick="return confirm('Deseja realmente cancelar seu pedido?');">
+                                Cancelar pedido
+                                <i class="material-icons right">close</i>
+                            </button>
                         </div>
                     </li>
-
                 </ul>
                 <script>
                     $('.collapsible').collapsible();
                 </script>
-
-
-
             </form>
         </div>
-
-
-
-
     </div>
     <script>
         var app = angular.module('myApp', []);
@@ -119,11 +112,9 @@
                     $scope.products = response.data.products;
                     $scope.borders = response.data.borders;
                     $scope.additionals = response.data.additionals;
-
                 });
         });
     </script>
-
     <script>
         (function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
@@ -132,7 +123,6 @@
             js.src = "//connect.facebook.net/en_US/messenger.Extensions.js";
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'Messenger'));
-
         window.extAsyncInit = function () {
             MessengerExtensions.getContext('1871130752977279',
                 function success(thread_context) {
@@ -152,8 +142,7 @@
                     // error
                 }
             );
-
-            $('#submitButton').click(function () {
+            $('#submitButton,#closeButton').click(function () {
                 MessengerExtensions.requestCloseBrowser(function success() {
                     // webview closed
                 }, function error(err) {
@@ -220,9 +209,7 @@
                                 });
                             }
                             if ((id_adicionais.length>1 && id_adicionais[0]==="")||(id_adicionais.length>0&&id_adicionais[0]!="")) {
-
                                 resumo += '<div class="col s12 col-no-pad"><b>Adicionais:</b></div>';
-
                                 id_adicionais.forEach(function (x, chave) {
                                     angular.forEach($scope.additionals, function (value3, key) {
                                         if (value3._id === x) {
@@ -242,6 +229,7 @@
                 resumo += '</div>'
                     + '<h5>Total: R$' + numberParaReal(total, 2) + '</h5>';
             }
+            $("#total_pedido").val(total);
             $('#result').html(resumo);
         }
         function numberParaReal(numero) {
@@ -250,5 +238,4 @@
         }
     </script>
 </body>
-
 </html>
