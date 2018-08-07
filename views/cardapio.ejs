@@ -90,7 +90,7 @@
                                 Enviar pedido
                                 <i class="material-icons right">send</i>
                             </button>
-                            <button class="red darken-3 btn" id="submitButton" type="button">
+                            <button class="red darken-3 btn" id="closeButton" type="button">
                                 Cancelar pedido
                                 <i class="material-icons right">close</i>
                             </button>
@@ -143,14 +143,16 @@
                 }
             );
             $('#submitButton').click(function () {
-                if (confirm('Deseja realmente enviar seu pedido?')) {
+                var r = confirm('Deseja realmente enviar seu pedido?')
+                if (r == true) {
                     MessengerExtensions.requestCloseBrowser(function success() { }, function error(err) { });
-                }
+                } 
             });
             $('#closeButton').click(function () {
-                if (confirm('Deseja cancelar enviar seu pedido?')) {
+                var r = confirm('Deseja realmente cancelar seu pedido?')
+                if (r == true) {
                     MessengerExtensions.requestCloseBrowser(function success() { }, function error(err) { });
-                }
+                } 
             });
 
 
