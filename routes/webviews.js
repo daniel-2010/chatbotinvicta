@@ -78,10 +78,10 @@ router.get('/save', function (req, res) {
           });
 
           if (body['product_' + doc._id + '_borda'].length > 0) {
-            bordersModel.findOne({ "_id": body['product_' + doc._id + '_borda'] }).exec()
+            bordersModel.findOne({ "_id": body['product_' + doc._id + '_borda'] }).select('_id nome_border preco_border').exec()
               .then(function (doc1) {
                 if (body['product_' + doc._id + '_borda'].length > 0) {
-                  additionalModel.find({ "_id": { $in: body['product_' + doc._id + '_adicionais'] } }, function (err, doc2) {
+                  additionalModel.find({ "_id": { $in: body['product_' + doc._id + '_adicionais'] } }).select('_id nome_additional preco_additional').exec( function (err, doc2) {
                     mitem.adicionais_item = doc2;
                     mitem.borda_item = doc1;
                     mitem.save().then();

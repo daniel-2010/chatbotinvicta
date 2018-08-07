@@ -11,7 +11,7 @@ const itensSchema = mongoose.Schema({
   qtd_item: { type: Number},
   obs_item: { type: String},
   borda_item: { type: Object},
-  adicionais_item: { type: String},
+  adicionais_item: { type: Object},
 });
 
 module.exports = mongoose.model("itens", itensSchema);
