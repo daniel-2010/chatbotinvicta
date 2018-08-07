@@ -62,13 +62,13 @@ router.get('/save', function (req, res) {
   });
 
   sale.save().then(function (err, sale) {
-
+    console.log("1 Codigo Venda: " + sale._id);
     if (err) {
       console.log(err)
     } else {
-      console.log("Codigo Venda: " + sale._id);
+      console.log("2 Codigo Venda: " + sale._id);
       itens.forEach(function (cod_item) {
-        console.log("Codigo item: " + cod_item);
+        console.log("3 Codigo item: " + cod_item);
         produtcModel.findOne({ "_id": cod_item }, function (err, doc) {
           let mitem = new itensModel({
             id_sale: sale._id,
