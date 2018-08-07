@@ -19,7 +19,7 @@
 <body>
     <div class="container">
         <div ng-app="myApp" ng-controller="myCtrl">
-            <form action="/webview/save" method="get" onsubmit="return validateSubmit(this);">
+            <form action="/webview/save" method="get">
                 <input type="hidden" name="psid" id="psid">
                 <input type="hidden" name="total_pedido" id="total_pedido">
                 <ul class="collapsible">
@@ -142,12 +142,13 @@
                     // error
                 }
             );
-            function validateSubmit() {
+            $('#submitButton').click(function () {
                 var r = confirm('Deseja realmente enviar seu pedido?')
                 if (r == true) {
+                    document.forms[0].submit();
                     MessengerExtensions.requestCloseBrowser(function success() { }, function error(err) { });
                 } 
-            };
+            });
             $('#closeButton').click(function () {
                 var r = confirm('Deseja realmente cancelar seu pedido?')
                 if (r == true) {
