@@ -112,10 +112,8 @@ router.get('/settings', function (req, res) {
 
 
 function get_border_by_id(id) {
-  bordersModel.findOne({ "_id": id }).exec()
-    .then(function (doc1) {
-      return doc1;
-    });
+  var result = bordersModel.findOne({ "_id": id }).exec();
+  return result;
 }
 
 module.exports = router;
