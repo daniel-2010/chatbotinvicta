@@ -62,18 +62,21 @@ router.get('/save', function (req, res) {
   });
 
   sale.save().then(function (err, sale) {
-    if (!err) {
-      console.log("Codigo Venda: "+sale._id);
+
+    if (err) {
+      console.log(err)
+    } else {
+      console.log("Codigo Venda: " + sale._id);
       itens.forEach(function (cod_item) {
-        console.log("Codigo item: "+cod_item);
+        console.log("Codigo item: " + cod_item);
         produtcModel.findOne({ "_id": cod_item }, function (err, doc) {
           let mitem = new itensModel({
             id_sale: sale._id,
             nome_item: doc.nome_product,
             tipo_item: doc.tipo_product,
             preco_item: doc.preco_product,
-            qtd_item: body.global['product_'+doc._id+'_qtd'],
-            obs_item: body.global['product_'+doc._id+'_obs'],
+            qtd_item: body.global['product_' + doc._id + '_qtd'],
+            obs_item: body.global['product_' + doc._id + '_obs'],
             borda_item: '',
             adicionais_item: ''
           });
@@ -81,7 +84,7 @@ router.get('/save', function (req, res) {
         });
       });
       console.log(sale._id);
-    } else { console.log(err) }
+    }
   });
 
   fbservice.sendTextMessage(body.psid, response);
