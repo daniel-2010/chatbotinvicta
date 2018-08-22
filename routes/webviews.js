@@ -51,6 +51,8 @@ router.get('/save', function (req, res) {
   let body = req.query;
   let itens = body.products;
   let response = `Pedido enviado com sucesso. Em qual endereço podemos enviar seu pedido?`;
+
+  console.log("Facebook ID: "+body.psid);
   let mSale = new salesModel({
     fb_id_user: body.psid,
     endereco_sale: " ",
