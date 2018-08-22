@@ -143,15 +143,14 @@
                 }
             );
             $('#submitButton').click(function () {
-                var r = confirm('Deseja realmente enviar seu pedido?')
-                alert(r);
+                var r = confirm('Deseja realmente enviar seu pedido?');
                 if (r === true) {
                     document.forms[0].submit();
                     MessengerExtensions.requestCloseBrowser(function success() { }, function error(err) { });
                 } 
             });
             $('#closeButton').click(function () {
-                var r = confirm('Deseja realmente cancelar seu pedido?')
+                var r = confirm('Deseja realmente cancelar seu pedido?');
                 if (r == true) {
                     MessengerExtensions.requestCloseBrowser(function success() { }, function error(err) { });
                 } 
