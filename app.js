@@ -802,7 +802,7 @@ function sendAccountLinking(recipientId) {
 function greetUserText(userId) {
 	//first read user firstname
 
-	
+	console.log("=======> User ID: "+userId);
 	request({
 		uri: 'https://graph.facebook.com/v2.7/' + userId,
 		qs: {
