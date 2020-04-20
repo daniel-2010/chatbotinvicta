@@ -17,7 +17,7 @@
     "sendgrid": "^4.2.0",
     "body-parser": "^1.15.1",
     "express": "^4.13.4",
-    "ejs": "^1.0.0",
+    "ejs": "^3.0.2",
     "mongoose": "^5.1.2",
     "request": "^2.72.0",
     "uuid": "^2.0.3"
